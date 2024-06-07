@@ -1,0 +1,884 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Fri Jun  7 12:42:46 2024
+# Process ID: 17732
+# Current directory: C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.runs/synth_1
+# Command line: vivado.exe -log Top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top.tcl
+# Log file: C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.runs/synth_1/Top.vds
+# Journal file: C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.runs/synth_1\vivado.jou
+# Running On: Bert_Pc, OS: Windows, CPU Frequency: 2995 MHz, CPU Physical cores: 14, Host memory: 33946 MB
+#-----------------------------------------------------------
+source Top.tcl -notrace
+create_project: Time (s): cpu = 00:00:02 ; elapsed = 00:00:21 . Memory (MB): peak = 492.504 ; gain = 197.938
+Command: synth_design -top Top -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 20004
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:12 . Memory (MB): peak = 1302.926 ; gain = 409.625
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'Top' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:3945]
+INFO: [Synth 8-6157] synthesizing module 'GameTop' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:3605]
+INFO: [Synth 8-6157] synthesizing module 'GraphicEngineVGA' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1370]
+INFO: [Synth 8-6157] synthesizing module 'Memory' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_0.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_0.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Memory_1' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:27]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized0' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_1.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_1.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized0' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_1' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:27]
+INFO: [Synth 8-6157] synthesizing module 'Memory_2' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:53]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized1' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_2.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_2.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized1' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_2' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:53]
+INFO: [Synth 8-6157] synthesizing module 'Memory_3' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:79]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized2' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_3.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_3.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized2' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_3' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:79]
+INFO: [Synth 8-6157] synthesizing module 'Memory_4' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:105]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized3' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_4.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_4.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized3' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_4' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:105]
+INFO: [Synth 8-6157] synthesizing module 'Memory_5' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:131]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized4' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_5.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_5.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized4' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_5' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:131]
+INFO: [Synth 8-6157] synthesizing module 'Memory_6' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:157]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized5' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_6.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_6.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized5' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_6' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:157]
+INFO: [Synth 8-6157] synthesizing module 'Memory_7' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:183]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized6' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_7.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_7.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized6' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_7' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:183]
+INFO: [Synth 8-6157] synthesizing module 'Memory_8' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:209]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized7' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_8.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_8.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized7' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_8' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:209]
+INFO: [Synth 8-6157] synthesizing module 'Memory_9' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:235]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized8' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_9.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_9.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized8' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_9' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:235]
+INFO: [Synth 8-6157] synthesizing module 'Memory_10' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:261]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized9' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_10.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_10.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized9' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_10' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:261]
+INFO: [Synth 8-6157] synthesizing module 'Memory_11' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:287]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized10' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_11.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_11.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized10' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_11' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:287]
+INFO: [Synth 8-6157] synthesizing module 'Memory_12' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:313]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized11' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_12.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_12.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized11' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_12' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:313]
+INFO: [Synth 8-6157] synthesizing module 'Memory_13' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:339]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized12' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_13.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_13.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized12' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_13' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:339]
+INFO: [Synth 8-6157] synthesizing module 'Memory_14' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:365]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized13' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_14.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_14.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized13' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_14' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:365]
+INFO: [Synth 8-6157] synthesizing module 'Memory_15' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:391]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized14' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_15.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_15.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized14' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_15' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:391]
+INFO: [Synth 8-6157] synthesizing module 'Memory_16' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:417]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized15' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_16.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_16.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized15' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_16' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:417]
+INFO: [Synth 8-6157] synthesizing module 'Memory_17' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:443]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized16' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_17.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_17.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized16' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_17' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:443]
+INFO: [Synth 8-6157] synthesizing module 'Memory_18' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:469]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized17' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_18.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_18.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized17' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_18' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:469]
+INFO: [Synth 8-6157] synthesizing module 'Memory_19' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:495]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized18' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_19.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_19.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized18' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_19' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:495]
+INFO: [Synth 8-6157] synthesizing module 'Memory_20' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:521]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized19' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_20.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_20.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized19' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_20' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:521]
+INFO: [Synth 8-6157] synthesizing module 'Memory_21' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:547]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized20' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_21.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_21.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized20' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_21' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:547]
+INFO: [Synth 8-6157] synthesizing module 'Memory_22' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:573]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized21' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_22.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_22.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized21' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_22' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:573]
+INFO: [Synth 8-6157] synthesizing module 'Memory_23' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:599]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized22' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_23.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_23.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized22' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_23' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:599]
+INFO: [Synth 8-6157] synthesizing module 'Memory_24' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:625]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized23' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_24.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_24.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized23' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_24' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:625]
+INFO: [Synth 8-6157] synthesizing module 'Memory_25' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:651]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized24' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_25.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_25.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized24' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_25' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:651]
+INFO: [Synth 8-6157] synthesizing module 'Memory_26' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:677]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized25' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_26.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_26.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized25' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_26' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:677]
+INFO: [Synth 8-6157] synthesizing module 'Memory_27' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:703]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized26' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_27.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_27.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized26' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_27' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:703]
+INFO: [Synth 8-6157] synthesizing module 'Memory_28' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:729]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized27' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_28.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_28.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized27' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_28' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:729]
+INFO: [Synth 8-6157] synthesizing module 'Memory_29' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:755]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized28' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_29.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_29.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized28' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_29' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:755]
+INFO: [Synth 8-6157] synthesizing module 'Memory_30' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:781]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized29' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_30.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_30.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized29' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_30' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:781]
+INFO: [Synth 8-6157] synthesizing module 'Memory_31' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:807]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized30' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backtile_init_31.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backtile_init_31.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized30' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_31' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:807]
+INFO: [Synth 8-6157] synthesizing module 'Memory_32' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:833]
+INFO: [Synth 8-6157] synthesizing module 'RamSpWf' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 11 - type: integer 
+	Parameter DATA_WIDTH bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'RamSpWf' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_32' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:833]
+INFO: [Synth 8-6157] synthesizing module 'Memory_34' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:861]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized31' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 11 - type: integer 
+	Parameter DATA_WIDTH bound to: 5 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/backbuffer_init.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/backbuffer_init.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized31' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_34' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:861]
+INFO: [Synth 8-6157] synthesizing module 'Memory_35' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:887]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized32' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/sprite_init_0.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/sprite_init_0.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized32' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_35' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:887]
+INFO: [Synth 8-6157] synthesizing module 'Memory_36' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:913]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized33' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/sprite_init_1.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/sprite_init_1.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized33' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_36' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:913]
+INFO: [Synth 8-6157] synthesizing module 'Memory_37' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:939]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized34' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/sprite_init_2.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/sprite_init_2.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized34' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_37' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:939]
+INFO: [Synth 8-6157] synthesizing module 'Memory_38' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:965]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized35' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/sprite_init_3.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/sprite_init_3.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized35' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_38' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:965]
+INFO: [Synth 8-6157] synthesizing module 'Memory_39' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:991]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized36' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/sprite_init_4.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/sprite_init_4.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized36' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_39' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:991]
+INFO: [Synth 8-6157] synthesizing module 'Memory_40' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1017]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized37' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/sprite_init_5.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/sprite_init_5.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized37' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_40' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1017]
+INFO: [Synth 8-6157] synthesizing module 'Memory_41' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1043]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized38' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/sprite_init_6.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/sprite_init_6.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized38' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_41' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1043]
+INFO: [Synth 8-6157] synthesizing module 'Memory_42' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1069]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized39' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/sprite_init_7.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/sprite_init_7.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized39' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_42' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1069]
+INFO: [Synth 8-6157] synthesizing module 'Memory_43' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1095]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized40' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/sprite_init_8.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/sprite_init_8.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized40' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_43' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1095]
+INFO: [Synth 8-6157] synthesizing module 'Memory_44' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1121]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized41' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/sprite_init_9.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/sprite_init_9.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized41' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_44' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1121]
+INFO: [Synth 8-6157] synthesizing module 'Memory_45' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1147]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized42' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/sprite_init_10.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/sprite_init_10.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized42' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_45' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1147]
+INFO: [Synth 8-6157] synthesizing module 'Memory_46' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1173]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized43' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/sprite_init_11.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/sprite_init_11.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized43' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_46' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1173]
+INFO: [Synth 8-6157] synthesizing module 'Memory_47' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1199]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized44' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/sprite_init_12.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/sprite_init_12.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized44' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_47' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1199]
+INFO: [Synth 8-6157] synthesizing module 'Memory_48' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1225]
+INFO: [Synth 8-6157] synthesizing module 'RamInitSpWf__parameterized45' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/sprite_init_13.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/sprite_init_13.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized45' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_48' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1225]
+INFO: [Synth 8-6157] synthesizing module 'Memory_49' [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1251]
+INFO: [Common 17-14] Message 'Synth 8-6157' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/sprite_init_14.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/sprite_init_14.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized46' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_49' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1251]
+	Parameter ADDR_WIDTH bound to: 10 - type: integer 
+	Parameter DATA_WIDTH bound to: 7 - type: integer 
+	Parameter LOAD_FILE bound to: memory_init/sprite_init_15.mem - type: string 
+INFO: [Synth 8-3876] $readmem data file 'memory_init/sprite_init_15.mem' is read successfully [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'RamInitSpWf__parameterized47' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_50' (0#1) [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:1277]
+INFO: [Common 17-14] Message 'Synth 8-6155' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-6014] Unused sequential element _T_669_0_reg was removed.  [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:2068]
+WARNING: [Synth 8-6014] Unused sequential element _T_669_1_reg was removed.  [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:3224]
+WARNING: [Synth 8-6014] Unused sequential element _T_678_0_reg was removed.  [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:2076]
+WARNING: [Synth 8-6014] Unused sequential element _T_678_1_reg was removed.  [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:3230]
+WARNING: [Synth 8-6014] Unused sequential element _T_687_0_reg was removed.  [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:2084]
+WARNING: [Synth 8-6014] Unused sequential element _T_687_1_reg was removed.  [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:3236]
+WARNING: [Synth 8-6014] Unused sequential element _T_696_0_reg was removed.  [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:2092]
+WARNING: [Synth 8-6014] Unused sequential element _T_696_1_reg was removed.  [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:3242]
+WARNING: [Synth 8-6014] Unused sequential element _T_705_0_reg was removed.  [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:2100]
+WARNING: [Synth 8-6014] Unused sequential element _T_705_1_reg was removed.  [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:3248]
+WARNING: [Synth 8-6014] Unused sequential element _T_714_0_reg was removed.  [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:2108]
+WARNING: [Synth 8-6014] Unused sequential element _T_714_1_reg was removed.  [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:3254]
+WARNING: [Synth 8-6014] Unused sequential element _T_723_0_reg was removed.  [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:2116]
+WARNING: [Synth 8-6014] Unused sequential element _T_723_1_reg was removed.  [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:3260]
+WARNING: [Synth 8-6014] Unused sequential element _T_732_0_reg was removed.  [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:2124]
+WARNING: [Synth 8-6014] Unused sequential element _T_732_1_reg was removed.  [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:3266]
+WARNING: [Synth 8-6014] Unused sequential element _T_741_0_reg was removed.  [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:2132]
+WARNING: [Synth 8-6014] Unused sequential element _T_741_1_reg was removed.  [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:3272]
+WARNING: [Synth 8-6014] Unused sequential element _T_750_0_reg was removed.  [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:2140]
+WARNING: [Synth 8-6014] Unused sequential element _T_750_1_reg was removed.  [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v:3278]
+WARNING: [Synth 8-3917] design Top has port io_led_0 driven by constant 0
+WARNING: [Synth 8-3917] design Top has port io_led_1 driven by constant 0
+WARNING: [Synth 8-3917] design Top has port io_led_2 driven by constant 0
+WARNING: [Synth 8-3917] design Top has port io_led_3 driven by constant 0
+WARNING: [Synth 8-3917] design Top has port io_led_4 driven by constant 0
+WARNING: [Synth 8-3917] design Top has port io_led_5 driven by constant 0
+WARNING: [Synth 8-3917] design Top has port io_led_6 driven by constant 0
+WARNING: [Synth 8-3917] design Top has port io_led_7 driven by constant 0
+WARNING: [Synth 8-3917] design Top has port io_backBufferWriteError driven by constant 0
+WARNING: [Synth 8-3917] design Top has port io_viewBoxOutOfRangeError driven by constant 0
+WARNING: [Synth 8-7129] Port io_btnC in module Top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_sw_0 in module Top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_sw_1 in module Top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_sw_2 in module Top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_sw_3 in module Top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_sw_4 in module Top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_sw_5 in module Top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_sw_6 in module Top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_sw_7 in module Top is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:19 . Memory (MB): peak = 1432.641 ; gain = 539.340
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:19 . Memory (MB): peak = 1432.641 ; gain = 539.340
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:19 . Memory (MB): peak = 1432.641 ; gain = 539.340
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.058 . Memory (MB): peak = 1432.641 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.srcs/constrs_1/imports/code/GameBasys3.xdc]
+Finished Parsing XDC File [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.srcs/constrs_1/imports/code/GameBasys3.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.srcs/constrs_1/imports/code/GameBasys3.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1535.086 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 1535.086 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:39 . Memory (MB): peak = 1535.086 ; gain = 641.785
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:39 . Memory (MB): peak = 1535.086 ; gain = 641.785
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:39 . Memory (MB): peak = 1535.086 ; gain = 641.785
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:42 . Memory (MB): peak = 1535.086 ; gain = 641.785
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input   12 Bit       Adders := 3     
+	   2 Input   12 Bit       Adders := 2     
+	   3 Input   11 Bit       Adders := 5     
+	   2 Input   11 Bit       Adders := 2     
+	   2 Input   10 Bit       Adders := 10    
+	   2 Input    2 Bit       Adders := 1     
++---Registers : 
+	               11 Bit    Registers := 7     
+	               10 Bit    Registers := 11    
+	                7 Bit    Registers := 80    
+	                6 Bit    Registers := 18    
+	                5 Bit    Registers := 4     
+	                4 Bit    Registers := 3     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 120   
++---RAMs : 
+	              10K Bit	(2048 X 5 bit)          RAMs := 3     
+	               7K Bit	(1024 X 7 bit)          RAMs := 48    
++---Muxes : 
+	   2 Input   12 Bit        Muxes := 2     
+	   3 Input   11 Bit        Muxes := 1     
+	   2 Input   11 Bit        Muxes := 3     
+	   3 Input   10 Bit        Muxes := 1     
+	   2 Input   10 Bit        Muxes := 2     
+	   2 Input    6 Bit        Muxes := 16    
+	   2 Input    5 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 2     
+	   2 Input    2 Bit        Muxes := 4     
+	   3 Input    2 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 20    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3917] design Top has port io_led_0 driven by constant 0
+WARNING: [Synth 8-3917] design Top has port io_led_1 driven by constant 0
+WARNING: [Synth 8-3917] design Top has port io_led_2 driven by constant 0
+WARNING: [Synth 8-3917] design Top has port io_led_3 driven by constant 0
+WARNING: [Synth 8-3917] design Top has port io_led_4 driven by constant 0
+WARNING: [Synth 8-3917] design Top has port io_led_5 driven by constant 0
+WARNING: [Synth 8-3917] design Top has port io_led_6 driven by constant 0
+WARNING: [Synth 8-3917] design Top has port io_led_7 driven by constant 0
+WARNING: [Synth 8-3917] design Top has port io_backBufferWriteError driven by constant 0
+WARNING: [Synth 8-3917] design Top has port io_viewBoxOutOfRangeError driven by constant 0
+WARNING: [Synth 8-7129] Port io_btnC in module Top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_sw_0 in module Top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_sw_1 in module Top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_sw_2 in module Top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_sw_3 in module Top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_sw_4 in module Top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_sw_5 in module Top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_sw_6 in module Top is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_sw_7 in module Top is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:51 . Memory (MB): peak = 1535.086 ; gain = 641.785
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping Report (see note below)
++------------------------------+-----------------------------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name                   | RTL Object                                                      | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------------------------+-----------------------------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|RamInitSpWf:                  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized0:  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized1:  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized2:  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized3:  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized4:  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized5:  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized6:  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized7:  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized8:  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized9:  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized10: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized11: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized12: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized13: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized14: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized15: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized16: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized17: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized18: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized19: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized20: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized21: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized22: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized23: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized24: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized25: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized26: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized27: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized28: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized29: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized30: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|Top                           | gameTop/graphicEngineVGA/backBufferShadowMemory/RamSpWf/RAM_reg | 2 K x 5(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized31: | RAM_reg                                                         | 2 K x 5(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized32: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized33: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized34: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized35: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized36: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized37: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized38: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized39: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized40: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized41: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized42: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized43: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized44: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized45: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized46: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized47: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|Top                           | gameTop/graphicEngineVGA/backBufferMemory/RamSpWf/RAM_reg       | 2 K x 5(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
++------------------------------+-----------------------------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:01:05 . Memory (MB): peak = 1535.086 ; gain = 641.785
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:01:09 . Memory (MB): peak = 1535.086 ; gain = 641.785
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping Report
++------------------------------+-----------------------------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name                   | RTL Object                                                      | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------------------------+-----------------------------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|RamInitSpWf:                  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized0:  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized1:  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized2:  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized3:  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized4:  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized5:  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized6:  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized7:  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized8:  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized9:  | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized10: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized11: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized12: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized13: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized14: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized15: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized16: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized17: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized18: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized19: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized20: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized21: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized22: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized23: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized24: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized25: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized26: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized27: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized28: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized29: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized30: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|Top                           | gameTop/graphicEngineVGA/backBufferShadowMemory/RamSpWf/RAM_reg | 2 K x 5(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized31: | RAM_reg                                                         | 2 K x 5(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized32: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized33: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized34: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized35: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized36: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized37: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized38: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized39: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized40: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized41: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized42: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized43: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized44: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized45: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized46: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|RamInitSpWf__parameterized47: | RAM_reg                                                         | 1 K x 7(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
+|Top                           | gameTop/graphicEngineVGA/backBufferMemory/RamSpWf/RAM_reg       | 2 K x 5(WRITE_FIRST)   | W | R |                        |   |   | Port A           | 1      | 0      | 
++------------------------------+-----------------------------------------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_7/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_8/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_8/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_9/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_9/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_10/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_10/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_11/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_11/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_12/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_12/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_13/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_13/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_14/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_14/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_15/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_15/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_16/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_16/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_17/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_17/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_18/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_18/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_19/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_19/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_20/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_20/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_21/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_21/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_24/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_24/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_25/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_25/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_26/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_26/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_27/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_27/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_28/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_28/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_29/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_29/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_30/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/backTileMemories_30/RamInitSpWf/RAM_reg' (RAMB18E1_7) to 'gameTop/graphicEngineVGA/backTileMemories_31/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/spriteMemories_5/RamInitSpWf/RAM_reg' (RAMB18E1_17) to 'gameTop/graphicEngineVGA/spriteMemories_6/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/spriteMemories_6/RamInitSpWf/RAM_reg' (RAMB18E1_17) to 'gameTop/graphicEngineVGA/spriteMemories_7/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/spriteMemories_7/RamInitSpWf/RAM_reg' (RAMB18E1_17) to 'gameTop/graphicEngineVGA/spriteMemories_8/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/spriteMemories_8/RamInitSpWf/RAM_reg' (RAMB18E1_17) to 'gameTop/graphicEngineVGA/spriteMemories_9/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/spriteMemories_9/RamInitSpWf/RAM_reg' (RAMB18E1_17) to 'gameTop/graphicEngineVGA/spriteMemories_10/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/spriteMemories_10/RamInitSpWf/RAM_reg' (RAMB18E1_17) to 'gameTop/graphicEngineVGA/spriteMemories_11/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/spriteMemories_11/RamInitSpWf/RAM_reg' (RAMB18E1_17) to 'gameTop/graphicEngineVGA/spriteMemories_12/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/spriteMemories_12/RamInitSpWf/RAM_reg' (RAMB18E1_17) to 'gameTop/graphicEngineVGA/spriteMemories_13/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/spriteMemories_13/RamInitSpWf/RAM_reg' (RAMB18E1_17) to 'gameTop/graphicEngineVGA/spriteMemories_14/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-223] decloning instance 'gameTop/graphicEngineVGA/spriteMemories_14/RamInitSpWf/RAM_reg' (RAMB18E1_17) to 'gameTop/graphicEngineVGA/spriteMemories_15/RamInitSpWf/RAM_reg'
+INFO: [Synth 8-7052] The timing for the instance gameTop/graphicEngineVGA/backBufferShadowMemory/RamSpWf/RAM_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance gameTop/graphicEngineVGA/backBufferRestoreMemory/RamInitSpWf/RAM_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:21 ; elapsed = 00:01:10 . Memory (MB): peak = 1535.086 ; gain = 641.785
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:24 ; elapsed = 00:01:21 . Memory (MB): peak = 1535.086 ; gain = 641.785
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:24 ; elapsed = 00:01:21 . Memory (MB): peak = 1535.086 ; gain = 641.785
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:24 ; elapsed = 00:01:22 . Memory (MB): peak = 1535.086 ; gain = 641.785
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:24 ; elapsed = 00:01:22 . Memory (MB): peak = 1535.086 ; gain = 641.785
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:24 ; elapsed = 00:01:22 . Memory (MB): peak = 1535.086 ; gain = 641.785
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:24 ; elapsed = 00:01:22 . Memory (MB): peak = 1535.086 ; gain = 641.785
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++------------+---------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name | RTL Name                              | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++------------+---------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Top         | gameTop/graphicEngineVGA/_T_756_0_reg | 3      | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|Top         | gameTop/graphicEngineVGA/_T_14_0_reg  | 4      | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|Top         | gameTop/graphicEngineVGA/_T_16_0_reg  | 4      | 1     | NO           | NO                 | YES               | 1      | 0       | 
++------------+---------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     1|
+|2     |CARRY4   |    71|
+|3     |LUT1     |    51|
+|4     |LUT2     |   152|
+|5     |LUT3     |    41|
+|6     |LUT4     |    36|
+|7     |LUT5     |   102|
+|8     |LUT6     |   105|
+|9     |MUXF7    |    26|
+|10    |RAMB18E1 |    19|
+|29    |SRL16E   |     3|
+|30    |FDRE     |   342|
+|31    |FDSE     |    27|
+|32    |IBUF     |     6|
+|33    |OBUF     |    25|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:24 ; elapsed = 00:01:22 . Memory (MB): peak = 1535.086 ; gain = 641.785
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 20 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:16 ; elapsed = 00:01:17 . Memory (MB): peak = 1535.086 ; gain = 539.340
+Synthesis Optimization Complete : Time (s): cpu = 00:00:24 ; elapsed = 00:01:22 . Memory (MB): peak = 1535.086 ; gain = 641.785
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.040 . Memory (MB): peak = 1535.086 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 116 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1535.086 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: b696e0db
+INFO: [Common 17-83] Releasing license: Synthesis
+300 Infos, 59 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:28 ; elapsed = 00:01:35 . Memory (MB): peak = 1535.086 ; gain = 1042.582
+INFO: [Common 17-1381] The checkpoint 'C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.runs/synth_1/Top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Top_utilization_synth.rpt -pb Top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Jun  7 12:44:48 2024...

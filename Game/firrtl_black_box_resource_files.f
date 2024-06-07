@@ -1,0 +1,2 @@
+C:\Users\berty\OneDrive\Dokumenter\DTU\2.Semester\digitalsystems\02113---Digital-Systems-Design-Project\Game\RamInitSpWf.v
+C:\Users\berty\OneDrive\Dokumenter\DTU\2.Semester\digitalsystems\02113---Digital-Systems-Design-Project\Game\RamSpWf.v

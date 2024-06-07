@@ -122,12 +122,13 @@ class GameLogic(SpriteNumber: Int, BackTileNumber: Int) extends Module {
     }
 
     is(compute1) {
+      //scrolling background:
       when(viewBoxXReg >=(640-32).U){
         viewBoxXReg := 0.U
       }.otherwise{
         viewBoxXReg := viewBoxXReg + 1.U
       }
-
+      //sprite moving
       when(io.btnU) {
         when(viewBoxYReg > 0.U) {
           viewBoxYReg := viewBoxYReg - 2.U

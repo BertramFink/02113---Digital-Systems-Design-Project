@@ -1,208 +1,200 @@
-[0m[[0m[31merror[0m] [0m[0mfirrtl.options.StageError: [0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.stage.ChiselStage.run(ChiselStage.scala:49)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Stage$$anon$1.transform(Stage.scala:43)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Stage$$anon$1.transform(Stage.scala:43)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.phases.DeletedWrapper.internalTransform(DeletedWrapper.scala:37)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.phases.DeletedWrapper.internalTransform(DeletedWrapper.scala:15)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Translator.transform(Phase.scala:240)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Translator.transform$(Phase.scala:240)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.phases.DeletedWrapper.transform(DeletedWrapper.scala:15)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Stage.$anonfun$transform$5(Stage.scala:46)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.LinearSeqOptimized.foldLeft(LinearSeqOptimized.scala:126)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.LinearSeqOptimized.foldLeft$(LinearSeqOptimized.scala:122)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.List.foldLeft(List.scala:89)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Stage.$anonfun$transform$3(Stage.scala:46)[0m
-[0m[[0m[31merror[0m] [0m[0m	at logger.Logger$.$anonfun$makeScope$2(Logger.scala:168)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:62)[0m
-[0m[[0m[31merror[0m] [0m[0m	at logger.Logger$.makeScope(Logger.scala:166)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Stage.transform(Stage.scala:46)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Stage.execute(Stage.scala:57)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.stage.ChiselStage.emitVerilog(ChiselStage.scala:103)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Top$.delayedEndpoint$Top$1(Top.scala:67)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Top$delayedInit$body.apply(Top.scala:66)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.Function0.apply$mcV$sp(Function0.scala:39)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.Function0.apply$mcV$sp$(Function0.scala:39)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.AbstractFunction0.apply$mcV$sp(AbstractFunction0.scala:17)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.App.$anonfun$main$1$adapted(App.scala:80)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.List.foreach(List.scala:392)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.App.main(App.scala:80)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.App.main$(App.scala:78)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Top$.main(Top.scala:66)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Top.main(Top.scala)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.lang.reflect.Method.invoke(Method.java:498)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.invokeMain(Run.scala:144)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.execute$1(Run.scala:94)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.$anonfun$runWithLoader$5(Run.scala:121)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Run$.executeSuccess(Run.scala:187)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.runWithLoader(Run.scala:121)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Defaults$.$anonfun$bgRunTask$6(Defaults.scala:1988)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Defaults$.$anonfun$termWrapper$2(Defaults.scala:1927)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.util.Try$.apply(Try.scala:213)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.BackgroundThreadPool$BackgroundRunnable.run(DefaultBackgroundJobService.scala:367)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.lang.Thread.run(Thread.java:750)[0m
-[0m[[0m[31merror[0m] [0m[0mCaused by: chisel3.internal.ChiselException: Exception thrown when elaborating ChiselGeneratorAnnotation[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.stage.ChiselGeneratorAnnotation.elaborate(ChiselAnnotations.scala:55)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.stage.phases.Elaborate.$anonfun$transform$1(Elaborate.scala:19)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.TraversableLike.$anonfun$flatMap$1(TraversableLike.scala:244)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.List.foreach(List.scala:392)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.TraversableLike.flatMap(TraversableLike.scala:244)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.TraversableLike.flatMap$(TraversableLike.scala:241)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.List.flatMap(List.scala:355)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.stage.phases.Elaborate.transform(Elaborate.scala:18)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.stage.phases.Elaborate.transform(Elaborate.scala:16)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.phases.DeletedWrapper.internalTransform(DeletedWrapper.scala:37)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.phases.DeletedWrapper.internalTransform(DeletedWrapper.scala:15)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Translator.transform(Phase.scala:240)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Translator.transform$(Phase.scala:240)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.phases.DeletedWrapper.transform(DeletedWrapper.scala:15)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.DependencyManager.$anonfun$transform$3(DependencyManager.scala:267)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.LinearSeqOptimized.foldLeft(LinearSeqOptimized.scala:126)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.LinearSeqOptimized.foldLeft$(LinearSeqOptimized.scala:122)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.List.foldLeft(List.scala:89)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.DependencyManager.transform(DependencyManager.scala:260)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.DependencyManager.transform$(DependencyManager.scala:245)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.PhaseManager.transform(DependencyManager.scala:424)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.stage.ChiselStage.run(ChiselStage.scala:35)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Stage$$anon$1.transform(Stage.scala:43)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Stage$$anon$1.transform(Stage.scala:43)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.phases.DeletedWrapper.internalTransform(DeletedWrapper.scala:37)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.phases.DeletedWrapper.internalTransform(DeletedWrapper.scala:15)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Translator.transform(Phase.scala:240)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Translator.transform$(Phase.scala:240)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.phases.DeletedWrapper.transform(DeletedWrapper.scala:15)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Stage.$anonfun$transform$5(Stage.scala:46)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.LinearSeqOptimized.foldLeft(LinearSeqOptimized.scala:126)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.LinearSeqOptimized.foldLeft$(LinearSeqOptimized.scala:122)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.List.foldLeft(List.scala:89)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Stage.$anonfun$transform$3(Stage.scala:46)[0m
-[0m[[0m[31merror[0m] [0m[0m	at logger.Logger$.$anonfun$makeScope$2(Logger.scala:168)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:62)[0m
-[0m[[0m[31merror[0m] [0m[0m	at logger.Logger$.makeScope(Logger.scala:166)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Stage.transform(Stage.scala:46)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Stage.execute(Stage.scala:57)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.stage.ChiselStage.emitVerilog(ChiselStage.scala:103)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Top$.delayedEndpoint$Top$1(Top.scala:67)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Top$delayedInit$body.apply(Top.scala:66)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.Function0.apply$mcV$sp(Function0.scala:39)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.Function0.apply$mcV$sp$(Function0.scala:39)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.AbstractFunction0.apply$mcV$sp(AbstractFunction0.scala:17)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.App.$anonfun$main$1$adapted(App.scala:80)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.List.foreach(List.scala:392)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.App.main(App.scala:80)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.App.main$(App.scala:78)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Top$.main(Top.scala:66)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Top.main(Top.scala)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.lang.reflect.Method.invoke(Method.java:498)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.invokeMain(Run.scala:144)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.execute$1(Run.scala:94)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.$anonfun$runWithLoader$5(Run.scala:121)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Run$.executeSuccess(Run.scala:187)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.runWithLoader(Run.scala:121)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Defaults$.$anonfun$bgRunTask$6(Defaults.scala:1988)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Defaults$.$anonfun$termWrapper$2(Defaults.scala:1927)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.util.Try$.apply(Try.scala:213)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.BackgroundThreadPool$BackgroundRunnable.run(DefaultBackgroundJobService.scala:367)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.lang.Thread.run(Thread.java:750)[0m
-[0m[[0m[31merror[0m] [0m[0mCaused by: java.lang.IllegalArgumentException: requirement failed: The 'is' keyword may not be used outside of a switch.[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.Predef$.require(Predef.scala:281)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.util.is$.apply(Conditional.scala:70)[0m
-[0m[[0m[31merror[0m] [0m[0m	at GameLogicTask0.$anonfun$new$10(GameLogicTask0.scala:223)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.WhenContext.<init>(When.scala:75)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.WhenContext.elsewhen(When.scala:55)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.util.SwitchContext.is(Conditional.scala:39)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.util.SwitchContext.is(Conditional.scala:46)[0m
-[0m[[0m[31merror[0m] [0m[0m	at GameLogicTask0.<init>(GameLogicTask0.scala:157)[0m
-[0m[[0m[31merror[0m] [0m[0m	at GameTop.$anonfun$gameLogic$1(GameTop.scala:48)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.Module$.do_apply(Module.scala:52)[0m
-[0m[[0m[31merror[0m] [0m[0m	at GameTop.<init>(GameTop.scala:48)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Top.$anonfun$gameTop$1(Top.scala:41)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.Module$.do_apply(Module.scala:52)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Top.<init>(Top.scala:41)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Top$.$anonfun$new$2(Top.scala:67)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.Module$.do_apply(Module.scala:52)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.stage.ChiselGeneratorAnnotation.$anonfun$elaborate$1(ChiselAnnotations.scala:50)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.internal.Builder$.$anonfun$build$1(Builder.scala:414)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:62)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.internal.Builder$.build(Builder.scala:412)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.stage.ChiselGeneratorAnnotation.elaborate(ChiselAnnotations.scala:50)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.stage.phases.Elaborate.$anonfun$transform$1(Elaborate.scala:19)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.TraversableLike.$anonfun$flatMap$1(TraversableLike.scala:244)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.List.foreach(List.scala:392)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.TraversableLike.flatMap(TraversableLike.scala:244)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.TraversableLike.flatMap$(TraversableLike.scala:241)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.List.flatMap(List.scala:355)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.stage.phases.Elaborate.transform(Elaborate.scala:18)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.stage.phases.Elaborate.transform(Elaborate.scala:16)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.phases.DeletedWrapper.internalTransform(DeletedWrapper.scala:37)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.phases.DeletedWrapper.internalTransform(DeletedWrapper.scala:15)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Translator.transform(Phase.scala:240)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Translator.transform$(Phase.scala:240)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.phases.DeletedWrapper.transform(DeletedWrapper.scala:15)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.DependencyManager.$anonfun$transform$3(DependencyManager.scala:267)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.LinearSeqOptimized.foldLeft(LinearSeqOptimized.scala:126)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.LinearSeqOptimized.foldLeft$(LinearSeqOptimized.scala:122)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.List.foldLeft(List.scala:89)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.DependencyManager.transform(DependencyManager.scala:260)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.DependencyManager.transform$(DependencyManager.scala:245)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.PhaseManager.transform(DependencyManager.scala:424)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.stage.ChiselStage.run(ChiselStage.scala:35)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Stage$$anon$1.transform(Stage.scala:43)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Stage$$anon$1.transform(Stage.scala:43)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.phases.DeletedWrapper.internalTransform(DeletedWrapper.scala:37)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.phases.DeletedWrapper.internalTransform(DeletedWrapper.scala:15)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Translator.transform(Phase.scala:240)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Translator.transform$(Phase.scala:240)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.phases.DeletedWrapper.transform(DeletedWrapper.scala:15)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Stage.$anonfun$transform$5(Stage.scala:46)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.LinearSeqOptimized.foldLeft(LinearSeqOptimized.scala:126)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.LinearSeqOptimized.foldLeft$(LinearSeqOptimized.scala:122)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.List.foldLeft(List.scala:89)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Stage.$anonfun$transform$3(Stage.scala:46)[0m
-[0m[[0m[31merror[0m] [0m[0m	at logger.Logger$.$anonfun$makeScope$2(Logger.scala:168)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:62)[0m
-[0m[[0m[31merror[0m] [0m[0m	at logger.Logger$.makeScope(Logger.scala:166)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Stage.transform(Stage.scala:46)[0m
-[0m[[0m[31merror[0m] [0m[0m	at firrtl.options.Stage.execute(Stage.scala:57)[0m
-[0m[[0m[31merror[0m] [0m[0m	at chisel3.stage.ChiselStage.emitVerilog(ChiselStage.scala:103)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Top$.delayedEndpoint$Top$1(Top.scala:67)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Top$delayedInit$body.apply(Top.scala:66)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.Function0.apply$mcV$sp(Function0.scala:39)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.Function0.apply$mcV$sp$(Function0.scala:39)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.AbstractFunction0.apply$mcV$sp(AbstractFunction0.scala:17)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.App.$anonfun$main$1$adapted(App.scala:80)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.collection.immutable.List.foreach(List.scala:392)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.App.main(App.scala:80)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.App.main$(App.scala:78)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Top$.main(Top.scala:66)[0m
-[0m[[0m[31merror[0m] [0m[0m	at Top.main(Top.scala)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.lang.reflect.Method.invoke(Method.java:498)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.invokeMain(Run.scala:144)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.execute$1(Run.scala:94)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.$anonfun$runWithLoader$5(Run.scala:121)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Run$.executeSuccess(Run.scala:187)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Run.runWithLoader(Run.scala:121)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Defaults$.$anonfun$bgRunTask$6(Defaults.scala:1988)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.Defaults$.$anonfun$termWrapper$2(Defaults.scala:1927)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)[0m
-[0m[[0m[31merror[0m] [0m[0m	at scala.util.Try$.apply(Try.scala:213)[0m
-[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.BackgroundThreadPool$BackgroundRunnable.run(DefaultBackgroundJobService.scala:367)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)[0m
-[0m[[0m[31merror[0m] [0m[0m	at java.lang.Thread.run(Thread.java:750)[0m
-[0m[[0m[31merror[0m] [0m[0m(Compile / [31mrun[0m) firrtl.options.StageError: [0m
+[error] firrtl.options.StageError: 
+[error] 	at chisel3.stage.ChiselStage.run(ChiselStage.scala:49)
+[error] 	at firrtl.options.Stage$$anon$1.transform(Stage.scala:43)
+[error] 	at firrtl.options.Stage$$anon$1.transform(Stage.scala:43)
+[error] 	at firrtl.options.phases.DeletedWrapper.internalTransform(DeletedWrapper.scala:37)
+[error] 	at firrtl.options.phases.DeletedWrapper.internalTransform(DeletedWrapper.scala:15)
+[error] 	at firrtl.options.Translator.transform(Phase.scala:240)
+[error] 	at firrtl.options.Translator.transform$(Phase.scala:240)
+[error] 	at firrtl.options.phases.DeletedWrapper.transform(DeletedWrapper.scala:15)
+[error] 	at firrtl.options.Stage.$anonfun$transform$5(Stage.scala:46)
+[error] 	at scala.collection.LinearSeqOptimized.foldLeft(LinearSeqOptimized.scala:126)
+[error] 	at scala.collection.LinearSeqOptimized.foldLeft$(LinearSeqOptimized.scala:122)
+[error] 	at scala.collection.immutable.List.foldLeft(List.scala:89)
+[error] 	at firrtl.options.Stage.$anonfun$transform$3(Stage.scala:46)
+[error] 	at logger.Logger$.$anonfun$makeScope$2(Logger.scala:168)
+[error] 	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:62)
+[error] 	at logger.Logger$.makeScope(Logger.scala:166)
+[error] 	at firrtl.options.Stage.transform(Stage.scala:46)
+[error] 	at firrtl.options.Stage.execute(Stage.scala:57)
+[error] 	at chisel3.stage.ChiselStage.emitVerilog(ChiselStage.scala:103)
+[error] 	at Top$.delayedEndpoint$Top$1(Top.scala:67)
+[error] 	at Top$delayedInit$body.apply(Top.scala:66)
+[error] 	at scala.Function0.apply$mcV$sp(Function0.scala:39)
+[error] 	at scala.Function0.apply$mcV$sp$(Function0.scala:39)
+[error] 	at scala.runtime.AbstractFunction0.apply$mcV$sp(AbstractFunction0.scala:17)
+[error] 	at scala.App.$anonfun$main$1$adapted(App.scala:80)
+[error] 	at scala.collection.immutable.List.foreach(List.scala:392)
+[error] 	at scala.App.main(App.scala:80)
+[error] 	at scala.App.main$(App.scala:78)
+[error] 	at Top$.main(Top.scala:66)
+[error] 	at Top.main(Top.scala)
+[error] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[error] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[error] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[error] 	at java.lang.reflect.Method.invoke(Method.java:498)
+[error] 	at sbt.Run.invokeMain(Run.scala:144)
+[error] 	at sbt.Run.execute$1(Run.scala:94)
+[error] 	at sbt.Run.$anonfun$runWithLoader$5(Run.scala:121)
+[error] 	at sbt.Run$.executeSuccess(Run.scala:187)
+[error] 	at sbt.Run.runWithLoader(Run.scala:121)
+[error] 	at sbt.Defaults$.$anonfun$bgRunTask$6(Defaults.scala:1988)
+[error] 	at sbt.Defaults$.$anonfun$termWrapper$2(Defaults.scala:1927)
+[error] 	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+[error] 	at scala.util.Try$.apply(Try.scala:213)
+[error] 	at sbt.internal.BackgroundThreadPool$BackgroundRunnable.run(DefaultBackgroundJobService.scala:367)
+[error] 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+[error] 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+[error] 	at java.lang.Thread.run(Thread.java:750)
+[error] Caused by: chisel3.internal.ChiselException: Exception thrown when elaborating ChiselGeneratorAnnotation
+[error] 	at chisel3.stage.ChiselGeneratorAnnotation.elaborate(ChiselAnnotations.scala:55)
+[error] 	at chisel3.stage.phases.Elaborate.$anonfun$transform$1(Elaborate.scala:19)
+[error] 	at scala.collection.TraversableLike.$anonfun$flatMap$1(TraversableLike.scala:244)
+[error] 	at scala.collection.immutable.List.foreach(List.scala:392)
+[error] 	at scala.collection.TraversableLike.flatMap(TraversableLike.scala:244)
+[error] 	at scala.collection.TraversableLike.flatMap$(TraversableLike.scala:241)
+[error] 	at scala.collection.immutable.List.flatMap(List.scala:355)
+[error] 	at chisel3.stage.phases.Elaborate.transform(Elaborate.scala:18)
+[error] 	at chisel3.stage.phases.Elaborate.transform(Elaborate.scala:16)
+[error] 	at firrtl.options.phases.DeletedWrapper.internalTransform(DeletedWrapper.scala:37)
+[error] 	at firrtl.options.phases.DeletedWrapper.internalTransform(DeletedWrapper.scala:15)
+[error] 	at firrtl.options.Translator.transform(Phase.scala:240)
+[error] 	at firrtl.options.Translator.transform$(Phase.scala:240)
+[error] 	at firrtl.options.phases.DeletedWrapper.transform(DeletedWrapper.scala:15)
+[error] 	at firrtl.options.DependencyManager.$anonfun$transform$3(DependencyManager.scala:267)
+[error] 	at scala.collection.LinearSeqOptimized.foldLeft(LinearSeqOptimized.scala:126)
+[error] 	at scala.collection.LinearSeqOptimized.foldLeft$(LinearSeqOptimized.scala:122)
+[error] 	at scala.collection.immutable.List.foldLeft(List.scala:89)
+[error] 	at firrtl.options.DependencyManager.transform(DependencyManager.scala:260)
+[error] 	at firrtl.options.DependencyManager.transform$(DependencyManager.scala:245)
+[error] 	at firrtl.options.PhaseManager.transform(DependencyManager.scala:424)
+[error] 	at chisel3.stage.ChiselStage.run(ChiselStage.scala:35)
+[error] 	at firrtl.options.Stage$$anon$1.transform(Stage.scala:43)
+[error] 	at firrtl.options.Stage$$anon$1.transform(Stage.scala:43)
+[error] 	at firrtl.options.phases.DeletedWrapper.internalTransform(DeletedWrapper.scala:37)
+[error] 	at firrtl.options.phases.DeletedWrapper.internalTransform(DeletedWrapper.scala:15)
+[error] 	at firrtl.options.Translator.transform(Phase.scala:240)
+[error] 	at firrtl.options.Translator.transform$(Phase.scala:240)
+[error] 	at firrtl.options.phases.DeletedWrapper.transform(DeletedWrapper.scala:15)
+[error] 	at firrtl.options.Stage.$anonfun$transform$5(Stage.scala:46)
+[error] 	at scala.collection.LinearSeqOptimized.foldLeft(LinearSeqOptimized.scala:126)
+[error] 	at scala.collection.LinearSeqOptimized.foldLeft$(LinearSeqOptimized.scala:122)
+[error] 	at scala.collection.immutable.List.foldLeft(List.scala:89)
+[error] 	at firrtl.options.Stage.$anonfun$transform$3(Stage.scala:46)
+[error] 	at logger.Logger$.$anonfun$makeScope$2(Logger.scala:168)
+[error] 	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:62)
+[error] 	at logger.Logger$.makeScope(Logger.scala:166)
+[error] 	at firrtl.options.Stage.transform(Stage.scala:46)
+[error] 	at firrtl.options.Stage.execute(Stage.scala:57)
+[error] 	at chisel3.stage.ChiselStage.emitVerilog(ChiselStage.scala:103)
+[error] 	at Top$.delayedEndpoint$Top$1(Top.scala:67)
+[error] 	at Top$delayedInit$body.apply(Top.scala:66)
+[error] 	at scala.Function0.apply$mcV$sp(Function0.scala:39)
+[error] 	at scala.Function0.apply$mcV$sp$(Function0.scala:39)
+[error] 	at scala.runtime.AbstractFunction0.apply$mcV$sp(AbstractFunction0.scala:17)
+[error] 	at scala.App.$anonfun$main$1$adapted(App.scala:80)
+[error] 	at scala.collection.immutable.List.foreach(List.scala:392)
+[error] 	at scala.App.main(App.scala:80)
+[error] 	at scala.App.main$(App.scala:78)
+[error] 	at Top$.main(Top.scala:66)
+[error] 	at Top.main(Top.scala)
+[error] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[error] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[error] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[error] 	at java.lang.reflect.Method.invoke(Method.java:498)
+[error] 	at sbt.Run.invokeMain(Run.scala:144)
+[error] 	at sbt.Run.execute$1(Run.scala:94)
+[error] 	at sbt.Run.$anonfun$runWithLoader$5(Run.scala:121)
+[error] 	at sbt.Run$.executeSuccess(Run.scala:187)
+[error] 	at sbt.Run.runWithLoader(Run.scala:121)
+[error] 	at sbt.Defaults$.$anonfun$bgRunTask$6(Defaults.scala:1988)
+[error] 	at sbt.Defaults$.$anonfun$termWrapper$2(Defaults.scala:1927)
+[error] 	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+[error] 	at scala.util.Try$.apply(Try.scala:213)
+[error] 	at sbt.internal.BackgroundThreadPool$BackgroundRunnable.run(DefaultBackgroundJobService.scala:367)
+[error] 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+[error] 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+[error] 	at java.lang.Thread.run(Thread.java:750)
+[error] Caused by: scala.MatchError: List(UInt<2>(0), UInt<2>(1), UInt<2>(2), UInt<2>(3)) (of class scala.collection.immutable.$colon$colon)
+[error] 	at GameLogic.<init>(GameLogic.scala:90)
+[error] 	at GameTop.$anonfun$gameLogic$1(GameTop.scala:47)
+[error] 	at chisel3.Module$.do_apply(Module.scala:52)
+[error] 	at GameTop.<init>(GameTop.scala:47)
+[error] 	at Top.$anonfun$gameTop$1(Top.scala:41)
+[error] 	at chisel3.Module$.do_apply(Module.scala:52)
+[error] 	at Top.<init>(Top.scala:41)
+[error] 	at Top$.$anonfun$new$2(Top.scala:67)
+[error] 	at chisel3.Module$.do_apply(Module.scala:52)
+[error] 	at chisel3.stage.ChiselGeneratorAnnotation.$anonfun$elaborate$1(ChiselAnnotations.scala:50)
+[error] 	at chisel3.internal.Builder$.$anonfun$build$1(Builder.scala:414)
+[error] 	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:62)
+[error] 	at chisel3.internal.Builder$.build(Builder.scala:412)
+[error] 	at chisel3.stage.ChiselGeneratorAnnotation.elaborate(ChiselAnnotations.scala:50)
+[error] 	at chisel3.stage.phases.Elaborate.$anonfun$transform$1(Elaborate.scala:19)
+[error] 	at scala.collection.TraversableLike.$anonfun$flatMap$1(TraversableLike.scala:244)
+[error] 	at scala.collection.immutable.List.foreach(List.scala:392)
+[error] 	at scala.collection.TraversableLike.flatMap(TraversableLike.scala:244)
+[error] 	at scala.collection.TraversableLike.flatMap$(TraversableLike.scala:241)
+[error] 	at scala.collection.immutable.List.flatMap(List.scala:355)
+[error] 	at chisel3.stage.phases.Elaborate.transform(Elaborate.scala:18)
+[error] 	at chisel3.stage.phases.Elaborate.transform(Elaborate.scala:16)
+[error] 	at firrtl.options.phases.DeletedWrapper.internalTransform(DeletedWrapper.scala:37)
+[error] 	at firrtl.options.phases.DeletedWrapper.internalTransform(DeletedWrapper.scala:15)
+[error] 	at firrtl.options.Translator.transform(Phase.scala:240)
+[error] 	at firrtl.options.Translator.transform$(Phase.scala:240)
+[error] 	at firrtl.options.phases.DeletedWrapper.transform(DeletedWrapper.scala:15)
+[error] 	at firrtl.options.DependencyManager.$anonfun$transform$3(DependencyManager.scala:267)
+[error] 	at scala.collection.LinearSeqOptimized.foldLeft(LinearSeqOptimized.scala:126)
+[error] 	at scala.collection.LinearSeqOptimized.foldLeft$(LinearSeqOptimized.scala:122)
+[error] 	at scala.collection.immutable.List.foldLeft(List.scala:89)
+[error] 	at firrtl.options.DependencyManager.transform(DependencyManager.scala:260)
+[error] 	at firrtl.options.DependencyManager.transform$(DependencyManager.scala:245)
+[error] 	at firrtl.options.PhaseManager.transform(DependencyManager.scala:424)
+[error] 	at chisel3.stage.ChiselStage.run(ChiselStage.scala:35)
+[error] 	at firrtl.options.Stage$$anon$1.transform(Stage.scala:43)
+[error] 	at firrtl.options.Stage$$anon$1.transform(Stage.scala:43)
+[error] 	at firrtl.options.phases.DeletedWrapper.internalTransform(DeletedWrapper.scala:37)
+[error] 	at firrtl.options.phases.DeletedWrapper.internalTransform(DeletedWrapper.scala:15)
+[error] 	at firrtl.options.Translator.transform(Phase.scala:240)
+[error] 	at firrtl.options.Translator.transform$(Phase.scala:240)
+[error] 	at firrtl.options.phases.DeletedWrapper.transform(DeletedWrapper.scala:15)
+[error] 	at firrtl.options.Stage.$anonfun$transform$5(Stage.scala:46)
+[error] 	at scala.collection.LinearSeqOptimized.foldLeft(LinearSeqOptimized.scala:126)
+[error] 	at scala.collection.LinearSeqOptimized.foldLeft$(LinearSeqOptimized.scala:122)
+[error] 	at scala.collection.immutable.List.foldLeft(List.scala:89)
+[error] 	at firrtl.options.Stage.$anonfun$transform$3(Stage.scala:46)
+[error] 	at logger.Logger$.$anonfun$makeScope$2(Logger.scala:168)
+[error] 	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:62)
+[error] 	at logger.Logger$.makeScope(Logger.scala:166)
+[error] 	at firrtl.options.Stage.transform(Stage.scala:46)
+[error] 	at firrtl.options.Stage.execute(Stage.scala:57)
+[error] 	at chisel3.stage.ChiselStage.emitVerilog(ChiselStage.scala:103)
+[error] 	at Top$.delayedEndpoint$Top$1(Top.scala:67)
+[error] 	at Top$delayedInit$body.apply(Top.scala:66)
+[error] 	at scala.Function0.apply$mcV$sp(Function0.scala:39)
+[error] 	at scala.Function0.apply$mcV$sp$(Function0.scala:39)
+[error] 	at scala.runtime.AbstractFunction0.apply$mcV$sp(AbstractFunction0.scala:17)
+[error] 	at scala.App.$anonfun$main$1$adapted(App.scala:80)
+[error] 	at scala.collection.immutable.List.foreach(List.scala:392)
+[error] 	at scala.App.main(App.scala:80)
+[error] 	at scala.App.main$(App.scala:78)
+[error] 	at Top$.main(Top.scala:66)
+[error] 	at Top.main(Top.scala)
+[error] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[error] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[error] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[error] 	at java.lang.reflect.Method.invoke(Method.java:498)
+[error] 	at sbt.Run.invokeMain(Run.scala:144)
+[error] 	at sbt.Run.execute$1(Run.scala:94)
+[error] 	at sbt.Run.$anonfun$runWithLoader$5(Run.scala:121)
+[error] 	at sbt.Run$.executeSuccess(Run.scala:187)
+[error] 	at sbt.Run.runWithLoader(Run.scala:121)
+[error] 	at sbt.Defaults$.$anonfun$bgRunTask$6(Defaults.scala:1988)
+[error] 	at sbt.Defaults$.$anonfun$termWrapper$2(Defaults.scala:1927)
+[error] 	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+[error] 	at scala.util.Try$.apply(Try.scala:213)
+[error] 	at sbt.internal.BackgroundThreadPool$BackgroundRunnable.run(DefaultBackgroundJobService.scala:367)
+[error] 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+[error] 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+[error] 	at java.lang.Thread.run(Thread.java:750)
+[error] (Compile / run) firrtl.options.StageError: 

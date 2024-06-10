@@ -4,7 +4,7 @@
 <!-- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.                   -->
 <!-- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.   -->
 
-<Project Product="Vivado" Version="7" Minor="63" Path="C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.xpr">
+<Project Product="Vivado" Version="7" Minor="63" Path="C:/Users/karlp/Downloads/code_v1.0.2/code_v1.0/vivado/Basys3Game/Basys3Game.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="d8b043bec96e4bd1b23a03d9f815337d"/>

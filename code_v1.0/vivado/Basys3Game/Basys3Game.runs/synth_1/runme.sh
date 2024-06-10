@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.runs/synth_1'
+HD_PWD='C:/Users/karlp/Downloads/code_v1.0.2/code_v1.0/vivado/Basys3Game/Basys3Game.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

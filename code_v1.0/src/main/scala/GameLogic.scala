@@ -84,15 +84,108 @@ class GameLogic(SpriteNumber: Int, BackTileNumber: Int) extends Module {
   //Setting frame done to zero
   io.frameUpdateDone := false.B
 
+  //alt up her fra er default
+
+  //states
+  val idle :: compute1 :: bgUpdater :: screenMove :: done :: Nil = Enum(5)
+  val stateReg = RegInit(idle)
+
+  //Two registers holding the view box X and Y
+  val viewBoxXReg = RegInit(0.U(11.W))
+  val viewBoxYReg = RegInit(0.U(10.W))
+
+  //Connecting registers to the graphic engine
+  io.viewBoxX := viewBoxXReg
+  io.viewBoxY := viewBoxYReg
   /////////////////////////////////////////////////////////////////
   // Write here your game logic
   // (you might need to change the initialization values above)
   /////////////////////////////////////////////////////////////////
 
-  // Just forwarding the newFrame into the frameUpdateDone with a 2 clock cycle delay
-  // frameUpdateDone will need to be driven by your game logic FSMs
-  io.frameUpdateDone := RegNext(RegNext(io.newFrame))
 
+  //Player sprite init
+  val SpPlayerXReg = RegInit(0.S(11.W))
+  val SpPlayerYReg = RegInit(128.S(10.W))
+  io.spriteVisible(0) := true.B
+
+  io.spriteXPosition(0) := SpPlayerXReg
+  io.spriteYPosition(0) := SpPlayerYReg
+
+  //score
+  val score = RegInit(0.U(4.W))
+
+  //edit background
+  val xBoxReg = RegInit(0.U(11.W))
+  val yBoxReg = RegInit(0.U(5.W))
+
+  switch(stateReg) {
+    is(idle) {
+      when(io.newFrame) {
+        stateReg := compute1
+      }
+    }
+    is(compute1) {
+      when((viewBoxXReg) >=(640).U){
+        viewBoxXReg := 0.U
+        xBoxReg := 0.U
+        when(score<10.U){
+          score := score+1.U
+        }.otherwise{
+          score := 0.U
+        }
+      }
+      when(io.btnU) {
+        when(viewBoxYReg > 0.U) {
+          viewBoxYReg := viewBoxYReg - 2.U
+        }
+      }
+      when(io.btnD) {
+        when(viewBoxYReg < 480.U) {
+          viewBoxYReg := viewBoxYReg + 2.U
+        }
+      }
+      when(io.btnL) {
+        when(SpPlayerXReg >= 0.S) {
+          SpPlayerXReg := SpPlayerXReg - 2.S
+        }
+      }
+      when(io.btnR) {
+        when(SpPlayerXReg <= (640).S) {
+          SpPlayerXReg := SpPlayerXReg + 2.S
+        }
+      }
+      when(io.btnC) {
+
+      }
+      stateReg := bgUpdater
+    }
+    is(bgUpdater){
+      //when(viewBoxXReg === (xBoxReg*32.U)) {
+      when(viewBoxXReg(4,0) === 0.U) {
+        when(yBoxReg < 15.U){
+          io.backBufferWriteData := score+10.U // backtile sprite
+          io.backBufferWriteAddress := 20.U+/*xBoxReg*/viewBoxXReg(10,5)+(yBoxReg*40.U) // box mapping
+          io.backBufferWriteEnable := true.B //
+          yBoxReg:= yBoxReg+1.U
+          stateReg:= bgUpdater
+        }.otherwise{
+          //xBoxReg:=xBoxReg+1.U
+          yBoxReg:=0.U
+          stateReg:= screenMove
+        }
+      }.otherwise{
+        stateReg:= screenMove
+      }
+    }
+    is(screenMove){
+      viewBoxXReg := viewBoxXReg + 2.U
+      stateReg := done
+    }
+    is(done) {
+      io.frameUpdateDone := true.B
+      stateReg := idle
+    }
+  }
 }
 
 //////////////////////////////////////////////////////////////////////////////

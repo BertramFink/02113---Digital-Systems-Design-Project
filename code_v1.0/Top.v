@@ -1371,19 +1371,16 @@ module GraphicEngineVGA(
   input         clock,
   input         reset,
   input  [10:0] io_spriteXPosition_0,
-  input  [10:0] io_spriteXPosition_1,
-  input  [9:0]  io_spriteYPosition_0,
-  input  [9:0]  io_spriteYPosition_2,
-  input  [9:0]  io_spriteYPosition_3,
-  input  [9:0]  io_spriteYPosition_4,
-  input         io_spriteVisible_2,
-  input         io_spriteVisible_3,
-  input         io_spriteVisible_4,
-  input         io_spriteFlipHorizontal_0,
-  input         io_spriteFlipHorizontal_1,
+  input  [9:0]  io_viewBoxX,
+  input  [8:0]  io_viewBoxY,
+  input  [4:0]  io_backBufferWriteData,
+  input  [10:0] io_backBufferWriteAddress,
+  input         io_backBufferWriteEnable,
   output        io_newFrame,
   input         io_frameUpdateDone,
   output        io_missingFrameError,
+  output        io_backBufferWriteError,
+  output        io_viewBoxOutOfRangeError,
   output [3:0]  io_vgaRed,
   output [3:0]  io_vgaBlue,
   output [3:0]  io_vgaGreen,
@@ -1799,15 +1796,8 @@ module GraphicEngineVGA(
   wire [20:0] _T_21 = frameClockCount + 21'h1; // @[GraphicEngineVGA.scala 101:92]
   wire  preDisplayArea = frameClockCount >= 21'h199a1b; // @[GraphicEngineVGA.scala 102:40]
   reg [10:0] spriteXPositionReg_0; // @[Reg.scala 27:20]
-  reg [10:0] spriteXPositionReg_1; // @[Reg.scala 27:20]
-  reg [10:0] spriteXPositionReg_2; // @[Reg.scala 27:20]
-  reg [10:0] spriteXPositionReg_3; // @[Reg.scala 27:20]
-  reg [10:0] spriteXPositionReg_4; // @[Reg.scala 27:20]
   reg [9:0] spriteYPositionReg_0; // @[Reg.scala 27:20]
-  reg [9:0] spriteYPositionReg_1; // @[Reg.scala 27:20]
-  reg [9:0] spriteYPositionReg_2; // @[Reg.scala 27:20]
-  reg [9:0] spriteYPositionReg_3; // @[Reg.scala 27:20]
-  reg [9:0] spriteYPositionReg_4; // @[Reg.scala 27:20]
+  reg  spriteVisibleReg_1; // @[Reg.scala 27:20]
   reg  spriteVisibleReg_2; // @[Reg.scala 27:20]
   reg  spriteVisibleReg_3; // @[Reg.scala 27:20]
   reg  spriteVisibleReg_4; // @[Reg.scala 27:20]
@@ -1822,9 +1812,10 @@ module GraphicEngineVGA(
   reg  spriteVisibleReg_13; // @[Reg.scala 27:20]
   reg  spriteVisibleReg_14; // @[Reg.scala 27:20]
   reg  spriteVisibleReg_15; // @[Reg.scala 27:20]
-  wire  _GEN_47 = io_newFrame ? io_spriteVisible_2 : spriteVisibleReg_2; // @[Reg.scala 28:19]
-  wire  _GEN_48 = io_newFrame ? io_spriteVisible_3 : spriteVisibleReg_3; // @[Reg.scala 28:19]
-  wire  _GEN_49 = io_newFrame ? io_spriteVisible_4 : spriteVisibleReg_4; // @[Reg.scala 28:19]
+  wire  _GEN_46 = io_newFrame ? 1'h0 : spriteVisibleReg_1; // @[Reg.scala 28:19]
+  wire  _GEN_47 = io_newFrame ? 1'h0 : spriteVisibleReg_2; // @[Reg.scala 28:19]
+  wire  _GEN_48 = io_newFrame ? 1'h0 : spriteVisibleReg_3; // @[Reg.scala 28:19]
+  wire  _GEN_49 = io_newFrame ? 1'h0 : spriteVisibleReg_4; // @[Reg.scala 28:19]
   wire  _GEN_50 = io_newFrame ? 1'h0 : spriteVisibleReg_5; // @[Reg.scala 28:19]
   wire  _GEN_51 = io_newFrame ? 1'h0 : spriteVisibleReg_6; // @[Reg.scala 28:19]
   wire  _GEN_52 = io_newFrame ? 1'h0 : spriteVisibleReg_7; // @[Reg.scala 28:19]
@@ -1836,20 +1827,31 @@ module GraphicEngineVGA(
   wire  _GEN_58 = io_newFrame ? 1'h0 : spriteVisibleReg_13; // @[Reg.scala 28:19]
   wire  _GEN_59 = io_newFrame ? 1'h0 : spriteVisibleReg_14; // @[Reg.scala 28:19]
   wire  _GEN_60 = io_newFrame ? 1'h0 : spriteVisibleReg_15; // @[Reg.scala 28:19]
-  reg  spriteFlipHorizontalReg_0; // @[Reg.scala 27:20]
-  reg  spriteFlipHorizontalReg_1; // @[Reg.scala 27:20]
+  reg [9:0] viewBoxXReg; // @[Reg.scala 27:20]
+  reg [8:0] viewBoxYReg; // @[Reg.scala 27:20]
   reg  missingFrameErrorReg; // @[GraphicEngineVGA.scala 120:37]
-  wire [10:0] pixelXBack = {{1'd0}, CounterXReg}; // @[GraphicEngineVGA.scala 131:27]
-  wire [10:0] pixelYBack = {{1'd0}, CounterYReg}; // @[GraphicEngineVGA.scala 132:27]
+  reg  backBufferWriteErrorReg; // @[GraphicEngineVGA.scala 121:40]
+  reg  viewBoxOutOfRangeErrorReg; // @[GraphicEngineVGA.scala 122:42]
+  wire  _T_28 = viewBoxXReg >= 10'h280; // @[GraphicEngineVGA.scala 129:41]
+  wire [9:0] viewBoxXClipped = _T_28 ? 10'h280 : viewBoxXReg; // @[GraphicEngineVGA.scala 129:28]
+  wire  _T_29 = viewBoxYReg >= 9'h1e0; // @[GraphicEngineVGA.scala 130:41]
+  wire [8:0] viewBoxYClipped = _T_29 ? 9'h1e0 : viewBoxYReg; // @[GraphicEngineVGA.scala 130:28]
+  wire [10:0] pixelXBack = CounterXReg + viewBoxXClipped; // @[GraphicEngineVGA.scala 131:27]
+  wire [9:0] _GEN_172 = {{1'd0}, viewBoxYClipped}; // @[GraphicEngineVGA.scala 132:27]
+  wire [10:0] pixelYBack = CounterYReg + _GEN_172; // @[GraphicEngineVGA.scala 132:27]
+  wire  _T_30 = viewBoxXReg > 10'h280; // @[GraphicEngineVGA.scala 133:20]
+  wire  _T_31 = viewBoxYReg > 9'h1e0; // @[GraphicEngineVGA.scala 133:43]
+  wire  _T_32 = _T_30 | _T_31; // @[GraphicEngineVGA.scala 133:28]
+  wire  _GEN_95 = _T_32 | viewBoxOutOfRangeErrorReg; // @[GraphicEngineVGA.scala 133:51]
   reg  newFrameStikyReg; // @[GraphicEngineVGA.scala 139:33]
   wire  _GEN_96 = io_newFrame | newFrameStikyReg; // @[GraphicEngineVGA.scala 140:21]
   reg  _T_33; // @[GraphicEngineVGA.scala 143:16]
   wire  _T_34 = newFrameStikyReg & io_newFrame; // @[GraphicEngineVGA.scala 146:26]
   wire  _GEN_98 = _T_34 | missingFrameErrorReg; // @[GraphicEngineVGA.scala 146:41]
-  wire [5:0] _GEN_172 = {{1'd0}, pixelYBack[4:0]}; // @[GraphicEngineVGA.scala 164:75]
-  wire [10:0] _T_37 = 6'h20 * _GEN_172; // @[GraphicEngineVGA.scala 164:75]
-  wire [10:0] _GEN_173 = {{6'd0}, pixelXBack[4:0]}; // @[GraphicEngineVGA.scala 164:62]
-  wire [11:0] _T_38 = _GEN_173 + _T_37; // @[GraphicEngineVGA.scala 164:62]
+  wire [5:0] _GEN_173 = {{1'd0}, pixelYBack[4:0]}; // @[GraphicEngineVGA.scala 164:75]
+  wire [10:0] _T_37 = 6'h20 * _GEN_173; // @[GraphicEngineVGA.scala 164:75]
+  wire [10:0] _GEN_174 = {{6'd0}, pixelXBack[4:0]}; // @[GraphicEngineVGA.scala 164:62]
+  wire [11:0] _T_38 = _GEN_174 + _T_37; // @[GraphicEngineVGA.scala 164:62]
   reg [6:0] backTileMemoryDataRead_0; // @[GraphicEngineVGA.scala 165:41]
   reg [6:0] backTileMemoryDataRead_1; // @[GraphicEngineVGA.scala 165:41]
   reg [6:0] backTileMemoryDataRead_2; // @[GraphicEngineVGA.scala 165:41]
@@ -1889,13 +1891,19 @@ module GraphicEngineVGA(
   reg  copyEnabledReg; // @[GraphicEngineVGA.scala 192:31]
   wire [11:0] _T_200 = backMemoryRestoreCounter + 12'h1; // @[GraphicEngineVGA.scala 198:58]
   reg [10:0] _T_203; // @[GraphicEngineVGA.scala 213:67]
-  wire [10:0] _T_206 = copyEnabled ? backMemoryCopyCounter[10:0] : 11'h0; // @[GraphicEngineVGA.scala 213:105]
+  reg [10:0] _T_205; // @[GraphicEngineVGA.scala 213:156]
+  wire [10:0] _T_206 = copyEnabled ? backMemoryCopyCounter[10:0] : _T_205; // @[GraphicEngineVGA.scala 213:105]
   reg  _T_208; // @[GraphicEngineVGA.scala 215:71]
+  reg  _T_209; // @[GraphicEngineVGA.scala 215:122]
+  wire  _T_210 = copyEnabled ? 1'h0 : _T_209; // @[GraphicEngineVGA.scala 215:92]
+  reg [4:0] _T_212; // @[GraphicEngineVGA.scala 216:106]
   reg [10:0] _T_215; // @[GraphicEngineVGA.scala 218:61]
   wire [11:0] _T_218 = 6'h28 * pixelYBack[10:5]; // @[GraphicEngineVGA.scala 218:130]
-  wire [11:0] _GEN_236 = {{6'd0}, pixelXBack[10:5]}; // @[GraphicEngineVGA.scala 218:117]
-  wire [12:0] _T_219 = _GEN_236 + _T_218; // @[GraphicEngineVGA.scala 218:117]
+  wire [11:0] _GEN_237 = {{6'd0}, pixelXBack[10:5]}; // @[GraphicEngineVGA.scala 218:117]
+  wire [12:0] _T_219 = _GEN_237 + _T_218; // @[GraphicEngineVGA.scala 218:117]
   wire [12:0] _T_220 = copyEnabledReg ? {{2'd0}, _T_215} : _T_219; // @[GraphicEngineVGA.scala 218:37]
+  wire  _T_221 = copyEnabled | copyEnabledReg; // @[GraphicEngineVGA.scala 225:20]
+  wire  _GEN_106 = io_backBufferWriteEnable | backBufferWriteErrorReg; // @[GraphicEngineVGA.scala 226:36]
   reg [4:0] _T_222; // @[GraphicEngineVGA.scala 235:56]
   wire [6:0] _GEN_109 = 5'h1 == _T_222 ? backTileMemoryDataRead_1 : backTileMemoryDataRead_0; // @[GraphicEngineVGA.scala 235:23]
   wire [6:0] _GEN_110 = 5'h2 == _T_222 ? backTileMemoryDataRead_2 : _GEN_109; // @[GraphicEngineVGA.scala 235:23]
@@ -1930,12 +1938,10 @@ module GraphicEngineVGA(
   wire [6:0] fullBackgroundColor = 5'h1f == _T_222 ? backTileMemoryDataRead_31 : _GEN_138; // @[GraphicEngineVGA.scala 235:23]
   reg [5:0] pixelColorBack; // @[GraphicEngineVGA.scala 237:31]
   wire [10:0] _T_229 = {1'h0,CounterXReg}; // @[GraphicEngineVGA.scala 250:47]
-  wire [11:0] _T_230 = $signed(_T_229) - $signed(spriteXPositionReg_0); // @[GraphicEngineVGA.scala 250:54]
-  wire [11:0] _T_233 = 12'sh1f - $signed(_T_230); // @[GraphicEngineVGA.scala 252:28]
-  wire [11:0] inSpriteX_0 = spriteFlipHorizontalReg_0 ? $signed(_T_233) : $signed(_T_230); // @[GraphicEngineVGA.scala 251:37]
+  wire [11:0] inSpriteX_0 = $signed(_T_229) - $signed(spriteXPositionReg_0); // @[GraphicEngineVGA.scala 250:54]
   wire [10:0] _T_235 = {1'h0,CounterYReg}; // @[GraphicEngineVGA.scala 256:47]
-  wire [10:0] _GEN_237 = {{1{spriteYPositionReg_0[9]}},spriteYPositionReg_0}; // @[GraphicEngineVGA.scala 256:54]
-  wire [11:0] _T_236 = $signed(_T_235) - $signed(_GEN_237); // @[GraphicEngineVGA.scala 256:54]
+  wire [10:0] _GEN_238 = {{1{spriteYPositionReg_0[9]}},spriteYPositionReg_0}; // @[GraphicEngineVGA.scala 256:54]
+  wire [11:0] _T_236 = $signed(_T_235) - $signed(_GEN_238); // @[GraphicEngineVGA.scala 256:54]
   wire  _T_240 = $signed(inSpriteX_0) >= 12'sh0; // @[GraphicEngineVGA.scala 262:33]
   wire  _T_241 = $signed(inSpriteX_0) < 12'sh20; // @[GraphicEngineVGA.scala 262:56]
   wire  _T_242 = _T_240 & _T_241; // @[GraphicEngineVGA.scala 262:40]
@@ -1943,11 +1949,8 @@ module GraphicEngineVGA(
   wire  _T_243 = $signed(inSpriteY_0) >= 11'sh0; // @[GraphicEngineVGA.scala 262:79]
   wire  _T_244 = _T_242 & _T_243; // @[GraphicEngineVGA.scala 262:63]
   wire  _T_245 = $signed(inSpriteY_0) < 11'sh20; // @[GraphicEngineVGA.scala 262:102]
-  wire [11:0] _T_249 = $signed(_T_229) - $signed(spriteXPositionReg_1); // @[GraphicEngineVGA.scala 250:54]
-  wire [11:0] _T_252 = 12'sh1f - $signed(_T_249); // @[GraphicEngineVGA.scala 252:28]
-  wire [11:0] inSpriteX_1 = spriteFlipHorizontalReg_1 ? $signed(_T_252) : $signed(_T_249); // @[GraphicEngineVGA.scala 251:37]
-  wire [10:0] _GEN_239 = {{1{spriteYPositionReg_1[9]}},spriteYPositionReg_1}; // @[GraphicEngineVGA.scala 256:54]
-  wire [11:0] _T_255 = $signed(_T_235) - $signed(_GEN_239); // @[GraphicEngineVGA.scala 256:54]
+  wire [11:0] inSpriteX_1 = $signed(_T_229) - 11'sh0; // @[GraphicEngineVGA.scala 250:54]
+  wire [11:0] _T_255 = $signed(_T_235) - 11'sh0; // @[GraphicEngineVGA.scala 256:54]
   wire  _T_259 = $signed(inSpriteX_1) >= 12'sh0; // @[GraphicEngineVGA.scala 262:33]
   wire  _T_260 = $signed(inSpriteX_1) < 12'sh20; // @[GraphicEngineVGA.scala 262:56]
   wire  _T_261 = _T_259 & _T_260; // @[GraphicEngineVGA.scala 262:40]
@@ -1955,77 +1958,25 @@ module GraphicEngineVGA(
   wire  _T_262 = $signed(inSpriteY_1) >= 11'sh0; // @[GraphicEngineVGA.scala 262:79]
   wire  _T_263 = _T_261 & _T_262; // @[GraphicEngineVGA.scala 262:63]
   wire  _T_264 = $signed(inSpriteY_1) < 11'sh20; // @[GraphicEngineVGA.scala 262:102]
-  wire [11:0] inSpriteX_2 = $signed(_T_229) - $signed(spriteXPositionReg_2); // @[GraphicEngineVGA.scala 250:54]
-  wire [10:0] _GEN_241 = {{1{spriteYPositionReg_2[9]}},spriteYPositionReg_2}; // @[GraphicEngineVGA.scala 256:54]
-  wire [11:0] _T_274 = $signed(_T_235) - $signed(_GEN_241); // @[GraphicEngineVGA.scala 256:54]
-  wire  _T_278 = $signed(inSpriteX_2) >= 12'sh0; // @[GraphicEngineVGA.scala 262:33]
-  wire  _T_279 = $signed(inSpriteX_2) < 12'sh20; // @[GraphicEngineVGA.scala 262:56]
-  wire  _T_280 = _T_278 & _T_279; // @[GraphicEngineVGA.scala 262:40]
-  wire [10:0] inSpriteY_2 = _T_274[10:0]; // @[GraphicEngineVGA.scala 248:23 GraphicEngineVGA.scala 258:20 GraphicEngineVGA.scala 260:20]
-  wire  _T_281 = $signed(inSpriteY_2) >= 11'sh0; // @[GraphicEngineVGA.scala 262:79]
-  wire  _T_282 = _T_280 & _T_281; // @[GraphicEngineVGA.scala 262:63]
-  wire  _T_283 = $signed(inSpriteY_2) < 11'sh20; // @[GraphicEngineVGA.scala 262:102]
-  wire [11:0] inSpriteX_3 = $signed(_T_229) - $signed(spriteXPositionReg_3); // @[GraphicEngineVGA.scala 250:54]
-  wire [10:0] _GEN_243 = {{1{spriteYPositionReg_3[9]}},spriteYPositionReg_3}; // @[GraphicEngineVGA.scala 256:54]
-  wire [11:0] _T_293 = $signed(_T_235) - $signed(_GEN_243); // @[GraphicEngineVGA.scala 256:54]
-  wire  _T_297 = $signed(inSpriteX_3) >= 12'sh0; // @[GraphicEngineVGA.scala 262:33]
-  wire  _T_298 = $signed(inSpriteX_3) < 12'sh20; // @[GraphicEngineVGA.scala 262:56]
-  wire  _T_299 = _T_297 & _T_298; // @[GraphicEngineVGA.scala 262:40]
-  wire [10:0] inSpriteY_3 = _T_293[10:0]; // @[GraphicEngineVGA.scala 248:23 GraphicEngineVGA.scala 258:20 GraphicEngineVGA.scala 260:20]
-  wire  _T_300 = $signed(inSpriteY_3) >= 11'sh0; // @[GraphicEngineVGA.scala 262:79]
-  wire  _T_301 = _T_299 & _T_300; // @[GraphicEngineVGA.scala 262:63]
-  wire  _T_302 = $signed(inSpriteY_3) < 11'sh20; // @[GraphicEngineVGA.scala 262:102]
-  wire [11:0] inSpriteX_4 = $signed(_T_229) - $signed(spriteXPositionReg_4); // @[GraphicEngineVGA.scala 250:54]
-  wire [10:0] _GEN_245 = {{1{spriteYPositionReg_4[9]}},spriteYPositionReg_4}; // @[GraphicEngineVGA.scala 256:54]
-  wire [11:0] _T_312 = $signed(_T_235) - $signed(_GEN_245); // @[GraphicEngineVGA.scala 256:54]
-  wire  _T_316 = $signed(inSpriteX_4) >= 12'sh0; // @[GraphicEngineVGA.scala 262:33]
-  wire  _T_317 = $signed(inSpriteX_4) < 12'sh20; // @[GraphicEngineVGA.scala 262:56]
-  wire  _T_318 = _T_316 & _T_317; // @[GraphicEngineVGA.scala 262:40]
-  wire [10:0] inSpriteY_4 = _T_312[10:0]; // @[GraphicEngineVGA.scala 248:23 GraphicEngineVGA.scala 258:20 GraphicEngineVGA.scala 260:20]
-  wire  _T_319 = $signed(inSpriteY_4) >= 11'sh0; // @[GraphicEngineVGA.scala 262:79]
-  wire  _T_320 = _T_318 & _T_319; // @[GraphicEngineVGA.scala 262:63]
-  wire  _T_321 = $signed(inSpriteY_4) < 11'sh20; // @[GraphicEngineVGA.scala 262:102]
-  wire [11:0] inSpriteX_5 = $signed(_T_229) - 11'sh0; // @[GraphicEngineVGA.scala 250:54]
-  wire [11:0] _T_331 = $signed(_T_235) - 11'sh0; // @[GraphicEngineVGA.scala 256:54]
-  wire  _T_335 = $signed(inSpriteX_5) >= 12'sh0; // @[GraphicEngineVGA.scala 262:33]
-  wire  _T_336 = $signed(inSpriteX_5) < 12'sh20; // @[GraphicEngineVGA.scala 262:56]
-  wire  _T_337 = _T_335 & _T_336; // @[GraphicEngineVGA.scala 262:40]
-  wire [10:0] inSpriteY_5 = _T_331[10:0]; // @[GraphicEngineVGA.scala 248:23 GraphicEngineVGA.scala 258:20 GraphicEngineVGA.scala 260:20]
-  wire  _T_338 = $signed(inSpriteY_5) >= 11'sh0; // @[GraphicEngineVGA.scala 262:79]
-  wire  _T_339 = _T_337 & _T_338; // @[GraphicEngineVGA.scala 262:63]
-  wire  _T_340 = $signed(inSpriteY_5) < 11'sh20; // @[GraphicEngineVGA.scala 262:102]
-  wire [5:0] _GEN_258 = {{1'd0}, inSpriteY_0[4:0]}; // @[GraphicEngineVGA.scala 270:74]
-  wire [10:0] _T_534 = 6'h20 * _GEN_258; // @[GraphicEngineVGA.scala 270:74]
-  wire [10:0] _GEN_259 = {{6'd0}, inSpriteX_0[4:0]}; // @[GraphicEngineVGA.scala 270:62]
-  wire [10:0] _T_536 = _GEN_259 + _T_534; // @[GraphicEngineVGA.scala 270:62]
-  wire [5:0] _GEN_260 = {{1'd0}, inSpriteY_1[4:0]}; // @[GraphicEngineVGA.scala 270:74]
-  wire [10:0] _T_539 = 6'h20 * _GEN_260; // @[GraphicEngineVGA.scala 270:74]
-  wire [10:0] _GEN_261 = {{6'd0}, inSpriteX_1[4:0]}; // @[GraphicEngineVGA.scala 270:62]
-  wire [10:0] _T_541 = _GEN_261 + _T_539; // @[GraphicEngineVGA.scala 270:62]
-  wire [5:0] _GEN_262 = {{1'd0}, inSpriteY_2[4:0]}; // @[GraphicEngineVGA.scala 270:74]
-  wire [10:0] _T_544 = 6'h20 * _GEN_262; // @[GraphicEngineVGA.scala 270:74]
-  wire [10:0] _GEN_263 = {{6'd0}, inSpriteX_2[4:0]}; // @[GraphicEngineVGA.scala 270:62]
-  wire [10:0] _T_546 = _GEN_263 + _T_544; // @[GraphicEngineVGA.scala 270:62]
-  wire [5:0] _GEN_264 = {{1'd0}, inSpriteY_3[4:0]}; // @[GraphicEngineVGA.scala 270:74]
-  wire [10:0] _T_549 = 6'h20 * _GEN_264; // @[GraphicEngineVGA.scala 270:74]
-  wire [10:0] _GEN_265 = {{6'd0}, inSpriteX_3[4:0]}; // @[GraphicEngineVGA.scala 270:62]
-  wire [10:0] _T_551 = _GEN_265 + _T_549; // @[GraphicEngineVGA.scala 270:62]
-  wire [5:0] _GEN_266 = {{1'd0}, inSpriteY_4[4:0]}; // @[GraphicEngineVGA.scala 270:74]
-  wire [10:0] _T_554 = 6'h20 * _GEN_266; // @[GraphicEngineVGA.scala 270:74]
-  wire [10:0] _GEN_267 = {{6'd0}, inSpriteX_4[4:0]}; // @[GraphicEngineVGA.scala 270:62]
-  wire [10:0] _T_556 = _GEN_267 + _T_554; // @[GraphicEngineVGA.scala 270:62]
-  wire [5:0] _GEN_268 = {{1'd0}, inSpriteY_5[4:0]}; // @[GraphicEngineVGA.scala 270:74]
-  wire [10:0] _T_559 = 6'h20 * _GEN_268; // @[GraphicEngineVGA.scala 270:74]
-  wire [10:0] _GEN_269 = {{6'd0}, inSpriteX_5[4:0]}; // @[GraphicEngineVGA.scala 270:62]
-  wire [10:0] _T_561 = _GEN_269 + _T_559; // @[GraphicEngineVGA.scala 270:62]
+  wire [5:0] _GEN_255 = {{1'd0}, inSpriteY_0[4:0]}; // @[GraphicEngineVGA.scala 270:74]
+  wire [10:0] _T_534 = 6'h20 * _GEN_255; // @[GraphicEngineVGA.scala 270:74]
+  wire [10:0] _GEN_256 = {{6'd0}, inSpriteX_0[4:0]}; // @[GraphicEngineVGA.scala 270:62]
+  wire [10:0] _T_536 = _GEN_256 + _T_534; // @[GraphicEngineVGA.scala 270:62]
+  wire [5:0] _GEN_257 = {{1'd0}, inSpriteY_1[4:0]}; // @[GraphicEngineVGA.scala 270:74]
+  wire [10:0] _T_539 = 6'h20 * _GEN_257; // @[GraphicEngineVGA.scala 270:74]
+  wire [10:0] _GEN_258 = {{6'd0}, inSpriteX_1[4:0]}; // @[GraphicEngineVGA.scala 270:62]
+  wire [10:0] _T_541 = _GEN_258 + _T_539; // @[GraphicEngineVGA.scala 270:62]
   reg [5:0] _T_613; // @[GraphicEngineVGA.scala 277:60]
   reg  _T_615_0; // @[GameUtilities.scala 21:24]
   reg  _T_615_1; // @[GameUtilities.scala 21:24]
   reg  _T_618; // @[GraphicEngineVGA.scala 278:132]
   wire  _T_619 = ~_T_618; // @[GraphicEngineVGA.scala 278:123]
   reg [5:0] _T_622; // @[GraphicEngineVGA.scala 277:60]
+  reg  _T_623_0; // @[GameUtilities.scala 21:24]
+  reg  _T_623_1; // @[GameUtilities.scala 21:24]
   reg  _T_624_0; // @[GameUtilities.scala 21:24]
   reg  _T_624_1; // @[GameUtilities.scala 21:24]
+  wire  _T_625 = _T_623_0 & _T_624_0; // @[GraphicEngineVGA.scala 278:91]
   reg  _T_627; // @[GraphicEngineVGA.scala 278:132]
   wire  _T_628 = ~_T_627; // @[GraphicEngineVGA.scala 278:123]
   reg [5:0] _T_631; // @[GraphicEngineVGA.scala 277:60]
@@ -2447,6 +2398,8 @@ module GraphicEngineVGA(
   );
   assign io_newFrame = run & _GEN_8; // @[GraphicEngineVGA.scala 67:15 GraphicEngineVGA.scala 76:23]
   assign io_missingFrameError = missingFrameErrorReg; // @[GraphicEngineVGA.scala 123:24]
+  assign io_backBufferWriteError = backBufferWriteErrorReg; // @[GraphicEngineVGA.scala 124:27]
+  assign io_viewBoxOutOfRangeError = viewBoxOutOfRangeErrorReg; // @[GraphicEngineVGA.scala 125:29]
   assign io_vgaRed = _T_763; // @[GraphicEngineVGA.scala 290:13]
   assign io_vgaBlue = _T_765; // @[GraphicEngineVGA.scala 292:14]
   assign io_vgaGreen = _T_764; // @[GraphicEngineVGA.scala 291:15]
@@ -2522,8 +2475,8 @@ module GraphicEngineVGA(
   assign backBufferMemory_io_dataWrite = backBufferShadowMemory_io_dataRead; // @[GraphicEngineVGA.scala 221:33]
   assign backBufferShadowMemory_clock = clock;
   assign backBufferShadowMemory_io_address = restoreEnabled ? _T_203 : _T_206; // @[GraphicEngineVGA.scala 213:37]
-  assign backBufferShadowMemory_io_writeEnable = restoreEnabled & _T_208; // @[GraphicEngineVGA.scala 215:41]
-  assign backBufferShadowMemory_io_dataWrite = restoreEnabled ? backBufferRestoreMemory_io_dataRead : 5'h0; // @[GraphicEngineVGA.scala 216:39]
+  assign backBufferShadowMemory_io_writeEnable = restoreEnabled ? _T_208 : _T_210; // @[GraphicEngineVGA.scala 215:41]
+  assign backBufferShadowMemory_io_dataWrite = restoreEnabled ? backBufferRestoreMemory_io_dataRead : _T_212; // @[GraphicEngineVGA.scala 216:39]
   assign backBufferRestoreMemory_clock = clock;
   assign backBufferRestoreMemory_io_address = backMemoryRestoreCounter[10:0]; // @[GraphicEngineVGA.scala 208:38]
   assign spriteMemories_0_clock = clock;
@@ -2531,33 +2484,33 @@ module GraphicEngineVGA(
   assign spriteMemories_1_clock = clock;
   assign spriteMemories_1_io_address = _T_541[9:0]; // @[GraphicEngineVGA.scala 270:34]
   assign spriteMemories_2_clock = clock;
-  assign spriteMemories_2_io_address = _T_546[9:0]; // @[GraphicEngineVGA.scala 270:34]
+  assign spriteMemories_2_io_address = _T_541[9:0]; // @[GraphicEngineVGA.scala 270:34]
   assign spriteMemories_3_clock = clock;
-  assign spriteMemories_3_io_address = _T_551[9:0]; // @[GraphicEngineVGA.scala 270:34]
+  assign spriteMemories_3_io_address = _T_541[9:0]; // @[GraphicEngineVGA.scala 270:34]
   assign spriteMemories_4_clock = clock;
-  assign spriteMemories_4_io_address = _T_556[9:0]; // @[GraphicEngineVGA.scala 270:34]
+  assign spriteMemories_4_io_address = _T_541[9:0]; // @[GraphicEngineVGA.scala 270:34]
   assign spriteMemories_5_clock = clock;
-  assign spriteMemories_5_io_address = _T_561[9:0]; // @[GraphicEngineVGA.scala 270:34]
+  assign spriteMemories_5_io_address = _T_541[9:0]; // @[GraphicEngineVGA.scala 270:34]
   assign spriteMemories_6_clock = clock;
-  assign spriteMemories_6_io_address = _T_561[9:0]; // @[GraphicEngineVGA.scala 270:34]
+  assign spriteMemories_6_io_address = _T_541[9:0]; // @[GraphicEngineVGA.scala 270:34]
   assign spriteMemories_7_clock = clock;
-  assign spriteMemories_7_io_address = _T_561[9:0]; // @[GraphicEngineVGA.scala 270:34]
+  assign spriteMemories_7_io_address = _T_541[9:0]; // @[GraphicEngineVGA.scala 270:34]
   assign spriteMemories_8_clock = clock;
-  assign spriteMemories_8_io_address = _T_561[9:0]; // @[GraphicEngineVGA.scala 270:34]
+  assign spriteMemories_8_io_address = _T_541[9:0]; // @[GraphicEngineVGA.scala 270:34]
   assign spriteMemories_9_clock = clock;
-  assign spriteMemories_9_io_address = _T_561[9:0]; // @[GraphicEngineVGA.scala 270:34]
+  assign spriteMemories_9_io_address = _T_541[9:0]; // @[GraphicEngineVGA.scala 270:34]
   assign spriteMemories_10_clock = clock;
-  assign spriteMemories_10_io_address = _T_561[9:0]; // @[GraphicEngineVGA.scala 270:34]
+  assign spriteMemories_10_io_address = _T_541[9:0]; // @[GraphicEngineVGA.scala 270:34]
   assign spriteMemories_11_clock = clock;
-  assign spriteMemories_11_io_address = _T_561[9:0]; // @[GraphicEngineVGA.scala 270:34]
+  assign spriteMemories_11_io_address = _T_541[9:0]; // @[GraphicEngineVGA.scala 270:34]
   assign spriteMemories_12_clock = clock;
-  assign spriteMemories_12_io_address = _T_561[9:0]; // @[GraphicEngineVGA.scala 270:34]
+  assign spriteMemories_12_io_address = _T_541[9:0]; // @[GraphicEngineVGA.scala 270:34]
   assign spriteMemories_13_clock = clock;
-  assign spriteMemories_13_io_address = _T_561[9:0]; // @[GraphicEngineVGA.scala 270:34]
+  assign spriteMemories_13_io_address = _T_541[9:0]; // @[GraphicEngineVGA.scala 270:34]
   assign spriteMemories_14_clock = clock;
-  assign spriteMemories_14_io_address = _T_561[9:0]; // @[GraphicEngineVGA.scala 270:34]
+  assign spriteMemories_14_io_address = _T_541[9:0]; // @[GraphicEngineVGA.scala 270:34]
   assign spriteMemories_15_clock = clock;
-  assign spriteMemories_15_io_address = _T_561[9:0]; // @[GraphicEngineVGA.scala 270:34]
+  assign spriteMemories_15_io_address = _T_541[9:0]; // @[GraphicEngineVGA.scala 270:34]
   assign multiHotPriortyReductionTree_io_dataInput_0 = _T_613; // @[GraphicEngineVGA.scala 277:50]
   assign multiHotPriortyReductionTree_io_dataInput_1 = _T_622; // @[GraphicEngineVGA.scala 277:50]
   assign multiHotPriortyReductionTree_io_dataInput_2 = _T_631; // @[GraphicEngineVGA.scala 277:50]
@@ -2575,7 +2528,7 @@ module GraphicEngineVGA(
   assign multiHotPriortyReductionTree_io_dataInput_14 = _T_739; // @[GraphicEngineVGA.scala 277:50]
   assign multiHotPriortyReductionTree_io_dataInput_15 = _T_748; // @[GraphicEngineVGA.scala 277:50]
   assign multiHotPriortyReductionTree_io_selectInput_0 = _T_615_0 & _T_619; // @[GraphicEngineVGA.scala 278:52]
-  assign multiHotPriortyReductionTree_io_selectInput_1 = _T_624_0 & _T_628; // @[GraphicEngineVGA.scala 278:52]
+  assign multiHotPriortyReductionTree_io_selectInput_1 = _T_625 & _T_628; // @[GraphicEngineVGA.scala 278:52]
   assign multiHotPriortyReductionTree_io_selectInput_2 = _T_634 & _T_637; // @[GraphicEngineVGA.scala 278:52]
   assign multiHotPriortyReductionTree_io_selectInput_3 = _T_643 & _T_646; // @[GraphicEngineVGA.scala 278:52]
   assign multiHotPriortyReductionTree_io_selectInput_4 = _T_652 & _T_655; // @[GraphicEngineVGA.scala 278:52]
@@ -2654,149 +2607,149 @@ initial begin
   _RAND_13 = {1{`RANDOM}};
   spriteXPositionReg_0 = _RAND_13[10:0];
   _RAND_14 = {1{`RANDOM}};
-  spriteXPositionReg_1 = _RAND_14[10:0];
+  spriteYPositionReg_0 = _RAND_14[9:0];
   _RAND_15 = {1{`RANDOM}};
-  spriteXPositionReg_2 = _RAND_15[10:0];
+  spriteVisibleReg_1 = _RAND_15[0:0];
   _RAND_16 = {1{`RANDOM}};
-  spriteXPositionReg_3 = _RAND_16[10:0];
+  spriteVisibleReg_2 = _RAND_16[0:0];
   _RAND_17 = {1{`RANDOM}};
-  spriteXPositionReg_4 = _RAND_17[10:0];
+  spriteVisibleReg_3 = _RAND_17[0:0];
   _RAND_18 = {1{`RANDOM}};
-  spriteYPositionReg_0 = _RAND_18[9:0];
+  spriteVisibleReg_4 = _RAND_18[0:0];
   _RAND_19 = {1{`RANDOM}};
-  spriteYPositionReg_1 = _RAND_19[9:0];
+  spriteVisibleReg_5 = _RAND_19[0:0];
   _RAND_20 = {1{`RANDOM}};
-  spriteYPositionReg_2 = _RAND_20[9:0];
+  spriteVisibleReg_6 = _RAND_20[0:0];
   _RAND_21 = {1{`RANDOM}};
-  spriteYPositionReg_3 = _RAND_21[9:0];
+  spriteVisibleReg_7 = _RAND_21[0:0];
   _RAND_22 = {1{`RANDOM}};
-  spriteYPositionReg_4 = _RAND_22[9:0];
+  spriteVisibleReg_8 = _RAND_22[0:0];
   _RAND_23 = {1{`RANDOM}};
-  spriteVisibleReg_2 = _RAND_23[0:0];
+  spriteVisibleReg_9 = _RAND_23[0:0];
   _RAND_24 = {1{`RANDOM}};
-  spriteVisibleReg_3 = _RAND_24[0:0];
+  spriteVisibleReg_10 = _RAND_24[0:0];
   _RAND_25 = {1{`RANDOM}};
-  spriteVisibleReg_4 = _RAND_25[0:0];
+  spriteVisibleReg_11 = _RAND_25[0:0];
   _RAND_26 = {1{`RANDOM}};
-  spriteVisibleReg_5 = _RAND_26[0:0];
+  spriteVisibleReg_12 = _RAND_26[0:0];
   _RAND_27 = {1{`RANDOM}};
-  spriteVisibleReg_6 = _RAND_27[0:0];
+  spriteVisibleReg_13 = _RAND_27[0:0];
   _RAND_28 = {1{`RANDOM}};
-  spriteVisibleReg_7 = _RAND_28[0:0];
+  spriteVisibleReg_14 = _RAND_28[0:0];
   _RAND_29 = {1{`RANDOM}};
-  spriteVisibleReg_8 = _RAND_29[0:0];
+  spriteVisibleReg_15 = _RAND_29[0:0];
   _RAND_30 = {1{`RANDOM}};
-  spriteVisibleReg_9 = _RAND_30[0:0];
+  viewBoxXReg = _RAND_30[9:0];
   _RAND_31 = {1{`RANDOM}};
-  spriteVisibleReg_10 = _RAND_31[0:0];
+  viewBoxYReg = _RAND_31[8:0];
   _RAND_32 = {1{`RANDOM}};
-  spriteVisibleReg_11 = _RAND_32[0:0];
+  missingFrameErrorReg = _RAND_32[0:0];
   _RAND_33 = {1{`RANDOM}};
-  spriteVisibleReg_12 = _RAND_33[0:0];
+  backBufferWriteErrorReg = _RAND_33[0:0];
   _RAND_34 = {1{`RANDOM}};
-  spriteVisibleReg_13 = _RAND_34[0:0];
+  viewBoxOutOfRangeErrorReg = _RAND_34[0:0];
   _RAND_35 = {1{`RANDOM}};
-  spriteVisibleReg_14 = _RAND_35[0:0];
+  newFrameStikyReg = _RAND_35[0:0];
   _RAND_36 = {1{`RANDOM}};
-  spriteVisibleReg_15 = _RAND_36[0:0];
+  _T_33 = _RAND_36[0:0];
   _RAND_37 = {1{`RANDOM}};
-  spriteFlipHorizontalReg_0 = _RAND_37[0:0];
+  backTileMemoryDataRead_0 = _RAND_37[6:0];
   _RAND_38 = {1{`RANDOM}};
-  spriteFlipHorizontalReg_1 = _RAND_38[0:0];
+  backTileMemoryDataRead_1 = _RAND_38[6:0];
   _RAND_39 = {1{`RANDOM}};
-  missingFrameErrorReg = _RAND_39[0:0];
+  backTileMemoryDataRead_2 = _RAND_39[6:0];
   _RAND_40 = {1{`RANDOM}};
-  newFrameStikyReg = _RAND_40[0:0];
+  backTileMemoryDataRead_3 = _RAND_40[6:0];
   _RAND_41 = {1{`RANDOM}};
-  _T_33 = _RAND_41[0:0];
+  backTileMemoryDataRead_4 = _RAND_41[6:0];
   _RAND_42 = {1{`RANDOM}};
-  backTileMemoryDataRead_0 = _RAND_42[6:0];
+  backTileMemoryDataRead_5 = _RAND_42[6:0];
   _RAND_43 = {1{`RANDOM}};
-  backTileMemoryDataRead_1 = _RAND_43[6:0];
+  backTileMemoryDataRead_6 = _RAND_43[6:0];
   _RAND_44 = {1{`RANDOM}};
-  backTileMemoryDataRead_2 = _RAND_44[6:0];
+  backTileMemoryDataRead_7 = _RAND_44[6:0];
   _RAND_45 = {1{`RANDOM}};
-  backTileMemoryDataRead_3 = _RAND_45[6:0];
+  backTileMemoryDataRead_8 = _RAND_45[6:0];
   _RAND_46 = {1{`RANDOM}};
-  backTileMemoryDataRead_4 = _RAND_46[6:0];
+  backTileMemoryDataRead_9 = _RAND_46[6:0];
   _RAND_47 = {1{`RANDOM}};
-  backTileMemoryDataRead_5 = _RAND_47[6:0];
+  backTileMemoryDataRead_10 = _RAND_47[6:0];
   _RAND_48 = {1{`RANDOM}};
-  backTileMemoryDataRead_6 = _RAND_48[6:0];
+  backTileMemoryDataRead_11 = _RAND_48[6:0];
   _RAND_49 = {1{`RANDOM}};
-  backTileMemoryDataRead_7 = _RAND_49[6:0];
+  backTileMemoryDataRead_12 = _RAND_49[6:0];
   _RAND_50 = {1{`RANDOM}};
-  backTileMemoryDataRead_8 = _RAND_50[6:0];
+  backTileMemoryDataRead_13 = _RAND_50[6:0];
   _RAND_51 = {1{`RANDOM}};
-  backTileMemoryDataRead_9 = _RAND_51[6:0];
+  backTileMemoryDataRead_14 = _RAND_51[6:0];
   _RAND_52 = {1{`RANDOM}};
-  backTileMemoryDataRead_10 = _RAND_52[6:0];
+  backTileMemoryDataRead_15 = _RAND_52[6:0];
   _RAND_53 = {1{`RANDOM}};
-  backTileMemoryDataRead_11 = _RAND_53[6:0];
+  backTileMemoryDataRead_16 = _RAND_53[6:0];
   _RAND_54 = {1{`RANDOM}};
-  backTileMemoryDataRead_12 = _RAND_54[6:0];
+  backTileMemoryDataRead_17 = _RAND_54[6:0];
   _RAND_55 = {1{`RANDOM}};
-  backTileMemoryDataRead_13 = _RAND_55[6:0];
+  backTileMemoryDataRead_18 = _RAND_55[6:0];
   _RAND_56 = {1{`RANDOM}};
-  backTileMemoryDataRead_14 = _RAND_56[6:0];
+  backTileMemoryDataRead_19 = _RAND_56[6:0];
   _RAND_57 = {1{`RANDOM}};
-  backTileMemoryDataRead_15 = _RAND_57[6:0];
+  backTileMemoryDataRead_20 = _RAND_57[6:0];
   _RAND_58 = {1{`RANDOM}};
-  backTileMemoryDataRead_16 = _RAND_58[6:0];
+  backTileMemoryDataRead_21 = _RAND_58[6:0];
   _RAND_59 = {1{`RANDOM}};
-  backTileMemoryDataRead_17 = _RAND_59[6:0];
+  backTileMemoryDataRead_22 = _RAND_59[6:0];
   _RAND_60 = {1{`RANDOM}};
-  backTileMemoryDataRead_18 = _RAND_60[6:0];
+  backTileMemoryDataRead_23 = _RAND_60[6:0];
   _RAND_61 = {1{`RANDOM}};
-  backTileMemoryDataRead_19 = _RAND_61[6:0];
+  backTileMemoryDataRead_24 = _RAND_61[6:0];
   _RAND_62 = {1{`RANDOM}};
-  backTileMemoryDataRead_20 = _RAND_62[6:0];
+  backTileMemoryDataRead_25 = _RAND_62[6:0];
   _RAND_63 = {1{`RANDOM}};
-  backTileMemoryDataRead_21 = _RAND_63[6:0];
+  backTileMemoryDataRead_26 = _RAND_63[6:0];
   _RAND_64 = {1{`RANDOM}};
-  backTileMemoryDataRead_22 = _RAND_64[6:0];
+  backTileMemoryDataRead_27 = _RAND_64[6:0];
   _RAND_65 = {1{`RANDOM}};
-  backTileMemoryDataRead_23 = _RAND_65[6:0];
+  backTileMemoryDataRead_28 = _RAND_65[6:0];
   _RAND_66 = {1{`RANDOM}};
-  backTileMemoryDataRead_24 = _RAND_66[6:0];
+  backTileMemoryDataRead_29 = _RAND_66[6:0];
   _RAND_67 = {1{`RANDOM}};
-  backTileMemoryDataRead_25 = _RAND_67[6:0];
+  backTileMemoryDataRead_30 = _RAND_67[6:0];
   _RAND_68 = {1{`RANDOM}};
-  backTileMemoryDataRead_26 = _RAND_68[6:0];
+  backTileMemoryDataRead_31 = _RAND_68[6:0];
   _RAND_69 = {1{`RANDOM}};
-  backTileMemoryDataRead_27 = _RAND_69[6:0];
+  backMemoryCopyCounter = _RAND_69[11:0];
   _RAND_70 = {1{`RANDOM}};
-  backTileMemoryDataRead_28 = _RAND_70[6:0];
+  copyEnabledReg = _RAND_70[0:0];
   _RAND_71 = {1{`RANDOM}};
-  backTileMemoryDataRead_29 = _RAND_71[6:0];
+  _T_203 = _RAND_71[10:0];
   _RAND_72 = {1{`RANDOM}};
-  backTileMemoryDataRead_30 = _RAND_72[6:0];
+  _T_205 = _RAND_72[10:0];
   _RAND_73 = {1{`RANDOM}};
-  backTileMemoryDataRead_31 = _RAND_73[6:0];
+  _T_208 = _RAND_73[0:0];
   _RAND_74 = {1{`RANDOM}};
-  backMemoryCopyCounter = _RAND_74[11:0];
+  _T_209 = _RAND_74[0:0];
   _RAND_75 = {1{`RANDOM}};
-  copyEnabledReg = _RAND_75[0:0];
+  _T_212 = _RAND_75[4:0];
   _RAND_76 = {1{`RANDOM}};
-  _T_203 = _RAND_76[10:0];
+  _T_215 = _RAND_76[10:0];
   _RAND_77 = {1{`RANDOM}};
-  _T_208 = _RAND_77[0:0];
+  _T_222 = _RAND_77[4:0];
   _RAND_78 = {1{`RANDOM}};
-  _T_215 = _RAND_78[10:0];
+  pixelColorBack = _RAND_78[5:0];
   _RAND_79 = {1{`RANDOM}};
-  _T_222 = _RAND_79[4:0];
+  _T_613 = _RAND_79[5:0];
   _RAND_80 = {1{`RANDOM}};
-  pixelColorBack = _RAND_80[5:0];
+  _T_615_0 = _RAND_80[0:0];
   _RAND_81 = {1{`RANDOM}};
-  _T_613 = _RAND_81[5:0];
+  _T_615_1 = _RAND_81[0:0];
   _RAND_82 = {1{`RANDOM}};
-  _T_615_0 = _RAND_82[0:0];
+  _T_618 = _RAND_82[0:0];
   _RAND_83 = {1{`RANDOM}};
-  _T_615_1 = _RAND_83[0:0];
+  _T_622 = _RAND_83[5:0];
   _RAND_84 = {1{`RANDOM}};
-  _T_618 = _RAND_84[0:0];
+  _T_623_0 = _RAND_84[0:0];
   _RAND_85 = {1{`RANDOM}};
-  _T_622 = _RAND_85[5:0];
+  _T_623_1 = _RAND_85[0:0];
   _RAND_86 = {1{`RANDOM}};
   _T_624_0 = _RAND_86[0:0];
   _RAND_87 = {1{`RANDOM}};
@@ -3054,50 +3007,11 @@ end // initial
       spriteXPositionReg_0 <= io_spriteXPosition_0;
     end
     if (reset) begin
-      spriteXPositionReg_1 <= 11'sh0;
-    end else if (io_newFrame) begin
-      spriteXPositionReg_1 <= io_spriteXPosition_1;
-    end
-    if (reset) begin
-      spriteXPositionReg_2 <= 11'sh0;
-    end else if (io_newFrame) begin
-      spriteXPositionReg_2 <= 11'sh17c;
-    end
-    if (reset) begin
-      spriteXPositionReg_3 <= 11'sh0;
-    end else if (io_newFrame) begin
-      spriteXPositionReg_3 <= 11'sh17c;
-    end
-    if (reset) begin
-      spriteXPositionReg_4 <= 11'sh0;
-    end else if (io_newFrame) begin
-      spriteXPositionReg_4 <= 11'sh17c;
-    end
-    if (reset) begin
       spriteYPositionReg_0 <= 10'sh0;
     end else if (io_newFrame) begin
-      spriteYPositionReg_0 <= io_spriteYPosition_0;
+      spriteYPositionReg_0 <= 10'sh80;
     end
-    if (reset) begin
-      spriteYPositionReg_1 <= 10'sh0;
-    end else if (io_newFrame) begin
-      spriteYPositionReg_1 <= 10'sh128;
-    end
-    if (reset) begin
-      spriteYPositionReg_2 <= 10'sh0;
-    end else if (io_newFrame) begin
-      spriteYPositionReg_2 <= io_spriteYPosition_2;
-    end
-    if (reset) begin
-      spriteYPositionReg_3 <= 10'sh0;
-    end else if (io_newFrame) begin
-      spriteYPositionReg_3 <= io_spriteYPosition_3;
-    end
-    if (reset) begin
-      spriteYPositionReg_4 <= 10'sh0;
-    end else if (io_newFrame) begin
-      spriteYPositionReg_4 <= io_spriteYPosition_4;
-    end
+    spriteVisibleReg_1 <= reset | _GEN_46;
     spriteVisibleReg_2 <= reset | _GEN_47;
     spriteVisibleReg_3 <= reset | _GEN_48;
     spriteVisibleReg_4 <= reset | _GEN_49;
@@ -3113,19 +3027,29 @@ end // initial
     spriteVisibleReg_14 <= reset | _GEN_59;
     spriteVisibleReg_15 <= reset | _GEN_60;
     if (reset) begin
-      spriteFlipHorizontalReg_0 <= 1'h0;
+      viewBoxXReg <= 10'h0;
     end else if (io_newFrame) begin
-      spriteFlipHorizontalReg_0 <= io_spriteFlipHorizontal_0;
+      viewBoxXReg <= io_viewBoxX;
     end
     if (reset) begin
-      spriteFlipHorizontalReg_1 <= 1'h0;
+      viewBoxYReg <= 9'h0;
     end else if (io_newFrame) begin
-      spriteFlipHorizontalReg_1 <= io_spriteFlipHorizontal_1;
+      viewBoxYReg <= io_viewBoxY;
     end
     if (reset) begin
       missingFrameErrorReg <= 1'h0;
     end else begin
       missingFrameErrorReg <= _GEN_98;
+    end
+    if (reset) begin
+      backBufferWriteErrorReg <= 1'h0;
+    end else if (_T_221) begin
+      backBufferWriteErrorReg <= _GEN_106;
+    end
+    if (reset) begin
+      viewBoxOutOfRangeErrorReg <= 1'h0;
+    end else begin
+      viewBoxOutOfRangeErrorReg <= _GEN_95;
     end
     if (reset) begin
       newFrameStikyReg <= 1'h0;
@@ -3178,7 +3102,10 @@ end // initial
     end
     copyEnabledReg <= preDisplayArea & _T_195;
     _T_203 <= backMemoryRestoreCounter[10:0];
+    _T_205 <= io_backBufferWriteAddress;
     _T_208 <= backMemoryRestoreCounter < 12'h800;
+    _T_209 <= io_backBufferWriteEnable;
+    _T_212 <= io_backBufferWriteData;
     _T_215 <= backMemoryCopyCounter[10:0];
     _T_222 <= backBufferMemory_io_dataRead;
     if (fullBackgroundColor[6]) begin
@@ -3191,6 +3118,8 @@ end // initial
     _T_615_1 <= _T_244 & _T_245;
     _T_618 <= spriteMemories_0_io_dataRead[6];
     _T_622 <= spriteMemories_1_io_dataRead[5:0];
+    _T_623_0 <= _T_623_1;
+    _T_623_1 <= spriteVisibleReg_1;
     _T_624_0 <= _T_624_1;
     _T_624_1 <= _T_263 & _T_264;
     _T_627 <= spriteMemories_1_io_dataRead[6];
@@ -3198,85 +3127,85 @@ end // initial
     _T_632_0 <= _T_632_1;
     _T_632_1 <= spriteVisibleReg_2;
     _T_633_0 <= _T_633_1;
-    _T_633_1 <= _T_282 & _T_283;
+    _T_633_1 <= _T_263 & _T_264;
     _T_636 <= spriteMemories_2_io_dataRead[6];
     _T_640 <= spriteMemories_3_io_dataRead[5:0];
     _T_641_0 <= _T_641_1;
     _T_641_1 <= spriteVisibleReg_3;
     _T_642_0 <= _T_642_1;
-    _T_642_1 <= _T_301 & _T_302;
+    _T_642_1 <= _T_263 & _T_264;
     _T_645 <= spriteMemories_3_io_dataRead[6];
     _T_649 <= spriteMemories_4_io_dataRead[5:0];
     _T_650_0 <= _T_650_1;
     _T_650_1 <= spriteVisibleReg_4;
     _T_651_0 <= _T_651_1;
-    _T_651_1 <= _T_320 & _T_321;
+    _T_651_1 <= _T_263 & _T_264;
     _T_654 <= spriteMemories_4_io_dataRead[6];
     _T_658 <= spriteMemories_5_io_dataRead[5:0];
     _T_659_0 <= _T_659_1;
     _T_659_1 <= spriteVisibleReg_5;
     _T_660_0 <= _T_660_1;
-    _T_660_1 <= _T_339 & _T_340;
+    _T_660_1 <= _T_263 & _T_264;
     _T_663 <= spriteMemories_5_io_dataRead[6];
     _T_667 <= spriteMemories_6_io_dataRead[5:0];
     _T_668_0 <= _T_668_1;
     _T_668_1 <= spriteVisibleReg_6;
     _T_669_0 <= _T_669_1;
-    _T_669_1 <= _T_339 & _T_340;
+    _T_669_1 <= _T_263 & _T_264;
     _T_672 <= spriteMemories_6_io_dataRead[6];
     _T_676 <= spriteMemories_7_io_dataRead[5:0];
     _T_677_0 <= _T_677_1;
     _T_677_1 <= spriteVisibleReg_7;
     _T_678_0 <= _T_678_1;
-    _T_678_1 <= _T_339 & _T_340;
+    _T_678_1 <= _T_263 & _T_264;
     _T_681 <= spriteMemories_7_io_dataRead[6];
     _T_685 <= spriteMemories_8_io_dataRead[5:0];
     _T_686_0 <= _T_686_1;
     _T_686_1 <= spriteVisibleReg_8;
     _T_687_0 <= _T_687_1;
-    _T_687_1 <= _T_339 & _T_340;
+    _T_687_1 <= _T_263 & _T_264;
     _T_690 <= spriteMemories_8_io_dataRead[6];
     _T_694 <= spriteMemories_9_io_dataRead[5:0];
     _T_695_0 <= _T_695_1;
     _T_695_1 <= spriteVisibleReg_9;
     _T_696_0 <= _T_696_1;
-    _T_696_1 <= _T_339 & _T_340;
+    _T_696_1 <= _T_263 & _T_264;
     _T_699 <= spriteMemories_9_io_dataRead[6];
     _T_703 <= spriteMemories_10_io_dataRead[5:0];
     _T_704_0 <= _T_704_1;
     _T_704_1 <= spriteVisibleReg_10;
     _T_705_0 <= _T_705_1;
-    _T_705_1 <= _T_339 & _T_340;
+    _T_705_1 <= _T_263 & _T_264;
     _T_708 <= spriteMemories_10_io_dataRead[6];
     _T_712 <= spriteMemories_11_io_dataRead[5:0];
     _T_713_0 <= _T_713_1;
     _T_713_1 <= spriteVisibleReg_11;
     _T_714_0 <= _T_714_1;
-    _T_714_1 <= _T_339 & _T_340;
+    _T_714_1 <= _T_263 & _T_264;
     _T_717 <= spriteMemories_11_io_dataRead[6];
     _T_721 <= spriteMemories_12_io_dataRead[5:0];
     _T_722_0 <= _T_722_1;
     _T_722_1 <= spriteVisibleReg_12;
     _T_723_0 <= _T_723_1;
-    _T_723_1 <= _T_339 & _T_340;
+    _T_723_1 <= _T_263 & _T_264;
     _T_726 <= spriteMemories_12_io_dataRead[6];
     _T_730 <= spriteMemories_13_io_dataRead[5:0];
     _T_731_0 <= _T_731_1;
     _T_731_1 <= spriteVisibleReg_13;
     _T_732_0 <= _T_732_1;
-    _T_732_1 <= _T_339 & _T_340;
+    _T_732_1 <= _T_263 & _T_264;
     _T_735 <= spriteMemories_13_io_dataRead[6];
     _T_739 <= spriteMemories_14_io_dataRead[5:0];
     _T_740_0 <= _T_740_1;
     _T_740_1 <= spriteVisibleReg_14;
     _T_741_0 <= _T_741_1;
-    _T_741_1 <= _T_339 & _T_340;
+    _T_741_1 <= _T_263 & _T_264;
     _T_744 <= spriteMemories_14_io_dataRead[6];
     _T_748 <= spriteMemories_15_io_dataRead[5:0];
     _T_749_0 <= _T_749_1;
     _T_749_1 <= spriteVisibleReg_15;
     _T_750_0 <= _T_750_1;
-    _T_750_1 <= _T_339 & _T_340;
+    _T_750_1 <= _T_263 & _T_264;
     _T_753 <= spriteMemories_15_io_dataRead[6];
     pixelColorSprite <= multiHotPriortyReductionTree_io_dataOutput;
     pixelColorSpriteValid <= multiHotPriortyReductionTree_io_selectOutput;
@@ -3288,7 +3217,7 @@ end // initial
     _T_765 <= {pixelColourVGA[1:0],pixelColourVGA[1:0]};
   end
 endmodule
-module GameLogicTask0(
+module GameLogic(
   input         clock,
   input         reset,
   input         io_btnU,
@@ -3296,16 +3225,11 @@ module GameLogicTask0(
   input         io_btnR,
   input         io_btnD,
   output [10:0] io_spriteXPosition_0,
-  output [10:0] io_spriteXPosition_1,
-  output [9:0]  io_spriteYPosition_0,
-  output [9:0]  io_spriteYPosition_2,
-  output [9:0]  io_spriteYPosition_3,
-  output [9:0]  io_spriteYPosition_4,
-  output        io_spriteVisible_2,
-  output        io_spriteVisible_3,
-  output        io_spriteVisible_4,
-  output        io_spriteFlipHorizontal_0,
-  output        io_spriteFlipHorizontal_1,
+  output [9:0]  io_viewBoxX,
+  output [8:0]  io_viewBoxY,
+  output [4:0]  io_backBufferWriteData,
+  output [10:0] io_backBufferWriteAddress,
+  output        io_backBufferWriteEnable,
   input         io_newFrame,
   output        io_frameUpdateDone
 );
@@ -3316,93 +3240,61 @@ module GameLogicTask0(
   reg [31:0] _RAND_3;
   reg [31:0] _RAND_4;
   reg [31:0] _RAND_5;
-  reg [31:0] _RAND_6;
-  reg [31:0] _RAND_7;
-  reg [31:0] _RAND_8;
-  reg [31:0] _RAND_9;
-  reg [31:0] _RAND_10;
-  reg [31:0] _RAND_11;
-  reg [31:0] _RAND_12;
-  reg [31:0] _RAND_13;
 `endif // RANDOMIZE_REG_INIT
-  reg [1:0] stateReg; // @[GameLogicTask0.scala 93:25]
-  reg [10:0] sprite0XReg; // @[GameLogicTask0.scala 96:28]
-  reg [9:0] sprite0YReg; // @[GameLogicTask0.scala 97:28]
-  reg [10:0] sprite1XReg; // @[GameLogicTask0.scala 98:28]
-  reg [9:0] sprite2YReg; // @[GameLogicTask0.scala 101:28]
-  reg [9:0] sprite3YReg; // @[GameLogicTask0.scala 103:28]
-  reg [9:0] sprite4YReg; // @[GameLogicTask0.scala 105:28]
-  reg  sprite0FlipHorizontalReg; // @[GameLogicTask0.scala 108:41]
-  reg  sprite1FlipHorizontalReg; // @[GameLogicTask0.scala 109:41]
-  reg  sprite1direction; // @[GameLogicTask0.scala 116:33]
-  reg  spritefingerDirection; // @[GameLogicTask0.scala 117:38]
-  reg  sprite2visible; // @[GameLogicTask0.scala 120:31]
-  reg  sprite3visible; // @[GameLogicTask0.scala 121:31]
-  reg  sprite4visible; // @[GameLogicTask0.scala 122:31]
-  wire  _T = 2'h0 == stateReg; // @[Conditional.scala 37:30]
-  wire  _T_1 = 2'h1 == stateReg; // @[Conditional.scala 37:30]
-  wire  _T_2 = $signed(sprite0YReg) < 10'sh1a8; // @[GameLogicTask0.scala 159:26]
-  wire [9:0] _T_5 = $signed(sprite0YReg) + 10'sh2; // @[GameLogicTask0.scala 160:38]
-  wire  _T_6 = $signed(sprite0YReg) > 10'sh60; // @[GameLogicTask0.scala 163:26]
-  wire [9:0] _T_9 = $signed(sprite0YReg) - 10'sh2; // @[GameLogicTask0.scala 164:38]
-  wire  _T_10 = $signed(sprite0XReg) < 11'sh240; // @[GameLogicTask0.scala 168:26]
-  wire [10:0] _T_13 = $signed(sprite0XReg) + 11'sh2; // @[GameLogicTask0.scala 169:38]
-  wire  _T_14 = $signed(sprite0XReg) > 11'sh20; // @[GameLogicTask0.scala 173:26]
-  wire [10:0] _T_17 = $signed(sprite0XReg) - 11'sh2; // @[GameLogicTask0.scala 174:38]
-  wire  _GEN_8 = _T_14 | sprite0FlipHorizontalReg; // @[GameLogicTask0.scala 173:34]
-  wire  _T_18 = $signed(sprite1XReg) <= 11'sh0; // @[GameLogicTask0.scala 179:24]
-  wire  _GEN_13 = _T_18 ? 1'h0 : sprite1FlipHorizontalReg; // @[GameLogicTask0.scala 179:31]
-  wire  _GEN_14 = _T_18 | sprite1direction; // @[GameLogicTask0.scala 179:31]
-  wire [9:0] _T_21 = 10'sh168 - 10'sh20; // @[GameLogicTask0.scala 183:31]
-  wire [10:0] _GEN_64 = {{1{_T_21[9]}},_T_21}; // @[GameLogicTask0.scala 183:24]
-  wire  _T_22 = $signed(sprite1XReg) >= $signed(_GEN_64); // @[GameLogicTask0.scala 183:24]
-  wire  _GEN_15 = _T_22 | _GEN_13; // @[GameLogicTask0.scala 183:37]
-  wire  _GEN_16 = _T_22 ? 1'h0 : _GEN_14; // @[GameLogicTask0.scala 183:37]
-  wire [10:0] _T_25 = $signed(sprite1XReg) + 11'sh1; // @[GameLogicTask0.scala 189:36]
-  wire [10:0] _T_28 = $signed(sprite1XReg) - 11'sh1; // @[GameLogicTask0.scala 190:46]
-  wire [9:0] _T_31 = 10'sh168 - 10'sh80; // @[GameLogicTask0.scala 194:32]
-  wire  _T_32 = $signed(sprite2YReg) <= $signed(_T_31); // @[GameLogicTask0.scala 194:24]
-  wire  _GEN_18 = _T_32 | spritefingerDirection; // @[GameLogicTask0.scala 194:39]
-  wire  _T_33 = $signed(sprite2YReg) >= 10'sh168; // @[GameLogicTask0.scala 197:24]
-  wire  _GEN_19 = _T_33 ? 1'h0 : _GEN_18; // @[GameLogicTask0.scala 197:32]
-  wire [9:0] _T_36 = 10'sh168 - 10'sh5a; // @[GameLogicTask0.scala 200:33]
-  wire  _T_37 = $signed(sprite2YReg) == $signed(_T_36); // @[GameLogicTask0.scala 200:24]
-  wire  _GEN_20 = _T_37 | sprite2visible; // @[GameLogicTask0.scala 200:40]
-  wire  _GEN_21 = _T_37 ? 1'h0 : sprite3visible; // @[GameLogicTask0.scala 200:40]
-  wire  _GEN_22 = _T_37 ? 1'h0 : sprite4visible; // @[GameLogicTask0.scala 200:40]
-  wire  _T_38 = $signed(sprite2YReg) == 10'sh12c; // @[GameLogicTask0.scala 207:22]
-  wire  _GEN_23 = _T_38 ? 1'h0 : _GEN_20; // @[GameLogicTask0.scala 207:38]
-  wire  _GEN_24 = _T_38 | _GEN_21; // @[GameLogicTask0.scala 207:38]
-  wire  _GEN_25 = _T_38 ? 1'h0 : _GEN_22; // @[GameLogicTask0.scala 207:38]
-  wire [9:0] _T_41 = 10'sh168 - 10'sh1e; // @[GameLogicTask0.scala 213:30]
-  wire  _T_42 = $signed(sprite2YReg) == $signed(_T_41); // @[GameLogicTask0.scala 213:22]
-  wire  _GEN_26 = _T_42 ? 1'h0 : _GEN_23; // @[GameLogicTask0.scala 213:36]
-  wire  _GEN_28 = _T_42 | _GEN_25; // @[GameLogicTask0.scala 213:36]
-  wire [9:0] _T_45 = $signed(sprite2YReg) + 10'sh1; // @[GameLogicTask0.scala 220:34]
-  wire [9:0] _T_48 = $signed(sprite3YReg) + 10'sh1; // @[GameLogicTask0.scala 221:34]
-  wire [9:0] _T_51 = $signed(sprite4YReg) + 10'sh1; // @[GameLogicTask0.scala 222:34]
-  wire [9:0] _T_54 = $signed(sprite2YReg) - 10'sh1; // @[GameLogicTask0.scala 224:34]
-  wire [9:0] _T_57 = $signed(sprite3YReg) - 10'sh1; // @[GameLogicTask0.scala 225:34]
-  wire  _T_61 = 2'h2 == stateReg; // @[Conditional.scala 37:30]
-  wire  _GEN_38 = _T_1 ? _GEN_16 : sprite1direction; // @[Conditional.scala 39:67]
-  wire  _GEN_40 = _T_1 ? _GEN_19 : spritefingerDirection; // @[Conditional.scala 39:67]
-  wire  _GEN_41 = _T_1 ? _GEN_26 : sprite2visible; // @[Conditional.scala 39:67]
-  wire  _GEN_48 = _T_1 ? 1'h0 : _T_61; // @[Conditional.scala 39:67]
-  wire  _GEN_54 = _T ? sprite1direction : _GEN_38; // @[Conditional.scala 40:58]
-  wire  _GEN_56 = _T ? spritefingerDirection : _GEN_40; // @[Conditional.scala 40:58]
-  wire  _GEN_57 = _T ? sprite2visible : _GEN_41; // @[Conditional.scala 40:58]
-  assign io_spriteXPosition_0 = sprite0XReg; // @[GameLogicTask0.scala 69:22 GameLogicTask0.scala 131:25]
-  assign io_spriteXPosition_1 = sprite1XReg; // @[GameLogicTask0.scala 69:22 GameLogicTask0.scala 134:25]
-  assign io_spriteYPosition_0 = sprite0YReg; // @[GameLogicTask0.scala 70:22 GameLogicTask0.scala 132:25]
-  assign io_spriteYPosition_2 = sprite2YReg; // @[GameLogicTask0.scala 70:22 GameLogicTask0.scala 139:25]
-  assign io_spriteYPosition_3 = sprite3YReg; // @[GameLogicTask0.scala 70:22 GameLogicTask0.scala 143:25]
-  assign io_spriteYPosition_4 = sprite4YReg; // @[GameLogicTask0.scala 70:22 GameLogicTask0.scala 146:25]
-  assign io_spriteVisible_2 = sprite2visible; // @[GameLogicTask0.scala 71:20 GameLogicTask0.scala 126:23]
-  assign io_spriteVisible_3 = sprite3visible; // @[GameLogicTask0.scala 71:20 GameLogicTask0.scala 127:23]
-  assign io_spriteVisible_4 = sprite4visible; // @[GameLogicTask0.scala 71:20 GameLogicTask0.scala 128:23]
-  assign io_spriteFlipHorizontal_0 = sprite0FlipHorizontalReg; // @[GameLogicTask0.scala 72:27 GameLogicTask0.scala 133:30]
-  assign io_spriteFlipHorizontal_1 = sprite1FlipHorizontalReg; // @[GameLogicTask0.scala 72:27 GameLogicTask0.scala 136:30]
-  assign io_frameUpdateDone = _T ? 1'h0 : _GEN_48; // @[GameLogicTask0.scala 85:22 GameLogicTask0.scala 232:26]
+  reg [2:0] stateReg; // @[GameLogic.scala 91:25]
+  reg [10:0] viewBoxXReg; // @[GameLogic.scala 94:28]
+  reg [9:0] viewBoxYReg; // @[GameLogic.scala 95:28]
+  reg [10:0] SpPlayerXReg; // @[GameLogic.scala 107:29]
+  reg [3:0] score; // @[GameLogic.scala 115:22]
+  reg [4:0] yBoxReg; // @[GameLogic.scala 119:24]
+  wire  _T = 3'h0 == stateReg; // @[Conditional.scala 37:30]
+  wire  _T_1 = 3'h1 == stateReg; // @[Conditional.scala 37:30]
+  wire  _T_2 = viewBoxXReg >= 11'h280; // @[GameLogic.scala 128:26]
+  wire  _T_3 = score < 4'ha; // @[GameLogic.scala 131:19]
+  wire [3:0] _T_5 = score + 4'h1; // @[GameLogic.scala 132:25]
+  wire  _T_6 = viewBoxYReg > 10'h0; // @[GameLogic.scala 138:26]
+  wire [9:0] _T_8 = viewBoxYReg - 10'h2; // @[GameLogic.scala 139:38]
+  wire  _T_9 = viewBoxYReg < 10'h1e0; // @[GameLogic.scala 143:26]
+  wire [9:0] _T_11 = viewBoxYReg + 10'h2; // @[GameLogic.scala 144:38]
+  wire  _T_12 = $signed(SpPlayerXReg) >= 11'sh0; // @[GameLogic.scala 148:27]
+  wire [10:0] _T_15 = $signed(SpPlayerXReg) - 11'sh2; // @[GameLogic.scala 149:40]
+  wire  _T_16 = $signed(SpPlayerXReg) <= 11'sh280; // @[GameLogic.scala 153:27]
+  wire [10:0] _T_19 = $signed(SpPlayerXReg) + 11'sh2; // @[GameLogic.scala 154:40]
+  wire  _T_20 = 3'h2 == stateReg; // @[Conditional.scala 37:30]
+  wire  _T_22 = viewBoxXReg[4:0] == 5'h0; // @[GameLogic.scala 164:29]
+  wire  _T_23 = yBoxReg < 5'hf; // @[GameLogic.scala 165:22]
+  wire [3:0] _T_25 = score + 4'ha; // @[GameLogic.scala 166:42]
+  wire [5:0] _T_28 = 6'h14 + viewBoxXReg[10:5]; // @[GameLogic.scala 167:44]
+  wire [5:0] _GEN_57 = {{1'd0}, yBoxReg}; // @[GameLogic.scala 167:82]
+  wire [10:0] _T_29 = _GEN_57 * 6'h28; // @[GameLogic.scala 167:82]
+  wire [10:0] _GEN_58 = {{5'd0}, _T_28}; // @[GameLogic.scala 167:73]
+  wire [10:0] _T_31 = _GEN_58 + _T_29; // @[GameLogic.scala 167:73]
+  wire [4:0] _T_33 = yBoxReg + 5'h1; // @[GameLogic.scala 169:28]
+  wire [3:0] _GEN_13 = _T_23 ? _T_25 : 4'h0; // @[GameLogic.scala 165:29]
+  wire [10:0] _GEN_14 = _T_23 ? _T_31 : 11'h0; // @[GameLogic.scala 165:29]
+  wire [3:0] _GEN_18 = _T_22 ? _GEN_13 : 4'h0; // @[GameLogic.scala 164:38]
+  wire [10:0] _GEN_19 = _T_22 ? _GEN_14 : 11'h0; // @[GameLogic.scala 164:38]
+  wire  _GEN_20 = _T_22 & _T_23; // @[GameLogic.scala 164:38]
+  wire  _T_34 = 3'h3 == stateReg; // @[Conditional.scala 37:30]
+  wire [10:0] _T_36 = viewBoxXReg + 11'h2; // @[GameLogic.scala 181:34]
+  wire  _T_37 = 3'h4 == stateReg; // @[Conditional.scala 37:30]
+  wire  _GEN_27 = _T_34 ? 1'h0 : _T_37; // @[Conditional.scala 39:67]
+  wire [3:0] _GEN_28 = _T_20 ? _GEN_18 : 4'h0; // @[Conditional.scala 39:67]
+  wire [10:0] _GEN_29 = _T_20 ? _GEN_19 : 11'h0; // @[Conditional.scala 39:67]
+  wire  _GEN_30 = _T_20 & _GEN_20; // @[Conditional.scala 39:67]
+  wire  _GEN_34 = _T_20 ? 1'h0 : _GEN_27; // @[Conditional.scala 39:67]
+  wire [3:0] _GEN_41 = _T_1 ? 4'h0 : _GEN_28; // @[Conditional.scala 39:67]
+  wire [10:0] _GEN_42 = _T_1 ? 11'h0 : _GEN_29; // @[Conditional.scala 39:67]
+  wire  _GEN_43 = _T_1 ? 1'h0 : _GEN_30; // @[Conditional.scala 39:67]
+  wire  _GEN_45 = _T_1 ? 1'h0 : _GEN_34; // @[Conditional.scala 39:67]
+  wire [3:0] _GEN_52 = _T ? 4'h0 : _GEN_41; // @[Conditional.scala 40:58]
+  assign io_spriteXPosition_0 = SpPlayerXReg; // @[GameLogic.scala 69:22 GameLogic.scala 111:25]
+  assign io_viewBoxX = viewBoxXReg[9:0]; // @[GameLogic.scala 76:15 GameLogic.scala 98:15]
+  assign io_viewBoxY = viewBoxYReg[8:0]; // @[GameLogic.scala 77:15 GameLogic.scala 99:15]
+  assign io_backBufferWriteData = {{1'd0}, _GEN_52}; // @[GameLogic.scala 80:26 GameLogic.scala 166:34]
+  assign io_backBufferWriteAddress = _T ? 11'h0 : _GEN_42; // @[GameLogic.scala 81:29 GameLogic.scala 167:37]
+  assign io_backBufferWriteEnable = _T ? 1'h0 : _GEN_43; // @[GameLogic.scala 82:28 GameLogic.scala 168:36]
+  assign io_frameUpdateDone = _T ? 1'h0 : _GEN_45; // @[GameLogic.scala 85:22 GameLogic.scala 185:26]
 `ifdef RANDOMIZE_GARBAGE_ASSIGN
 `define RANDOMIZE
 `endif
@@ -3439,33 +3331,17 @@ initial begin
     `endif
 `ifdef RANDOMIZE_REG_INIT
   _RAND_0 = {1{`RANDOM}};
-  stateReg = _RAND_0[1:0];
+  stateReg = _RAND_0[2:0];
   _RAND_1 = {1{`RANDOM}};
-  sprite0XReg = _RAND_1[10:0];
+  viewBoxXReg = _RAND_1[10:0];
   _RAND_2 = {1{`RANDOM}};
-  sprite0YReg = _RAND_2[9:0];
+  viewBoxYReg = _RAND_2[9:0];
   _RAND_3 = {1{`RANDOM}};
-  sprite1XReg = _RAND_3[10:0];
+  SpPlayerXReg = _RAND_3[10:0];
   _RAND_4 = {1{`RANDOM}};
-  sprite2YReg = _RAND_4[9:0];
+  score = _RAND_4[3:0];
   _RAND_5 = {1{`RANDOM}};
-  sprite3YReg = _RAND_5[9:0];
-  _RAND_6 = {1{`RANDOM}};
-  sprite4YReg = _RAND_6[9:0];
-  _RAND_7 = {1{`RANDOM}};
-  sprite0FlipHorizontalReg = _RAND_7[0:0];
-  _RAND_8 = {1{`RANDOM}};
-  sprite1FlipHorizontalReg = _RAND_8[0:0];
-  _RAND_9 = {1{`RANDOM}};
-  sprite1direction = _RAND_9[0:0];
-  _RAND_10 = {1{`RANDOM}};
-  spritefingerDirection = _RAND_10[0:0];
-  _RAND_11 = {1{`RANDOM}};
-  sprite2visible = _RAND_11[0:0];
-  _RAND_12 = {1{`RANDOM}};
-  sprite3visible = _RAND_12[0:0];
-  _RAND_13 = {1{`RANDOM}};
-  sprite4visible = _RAND_13[0:0];
+  yBoxReg = _RAND_5[4:0];
 `endif // RANDOMIZE_REG_INIT
   `endif // RANDOMIZE
 end // initial
@@ -3475,129 +3351,105 @@ end // initial
 `endif // SYNTHESIS
   always @(posedge clock) begin
     if (reset) begin
-      stateReg <= 2'h0;
+      stateReg <= 3'h0;
     end else if (_T) begin
       if (io_newFrame) begin
-        stateReg <= 2'h1;
+        stateReg <= 3'h1;
       end
     end else if (_T_1) begin
-      stateReg <= 2'h2;
-    end else if (_T_61) begin
-      stateReg <= 2'h0;
+      stateReg <= 3'h2;
+    end else if (_T_20) begin
+      if (_T_22) begin
+        if (_T_23) begin
+          stateReg <= 3'h2;
+        end else begin
+          stateReg <= 3'h3;
+        end
+      end else begin
+        stateReg <= 3'h3;
+      end
+    end else if (_T_34) begin
+      stateReg <= 3'h4;
+    end else if (_T_37) begin
+      stateReg <= 3'h0;
     end
     if (reset) begin
-      sprite0XReg <= 11'sh20;
+      viewBoxXReg <= 11'h0;
     end else if (!(_T)) begin
       if (_T_1) begin
-        if (io_btnR) begin
-          if (_T_10) begin
-            sprite0XReg <= _T_13;
-          end
-        end else if (io_btnL) begin
-          if (_T_14) begin
-            sprite0XReg <= _T_17;
-          end
+        if (_T_2) begin
+          viewBoxXReg <= 11'h0;
+        end
+      end else if (!(_T_20)) begin
+        if (_T_34) begin
+          viewBoxXReg <= _T_36;
         end
       end
     end
     if (reset) begin
-      sprite0YReg <= 10'sh148;
+      viewBoxYReg <= 10'h0;
     end else if (!(_T)) begin
       if (_T_1) begin
         if (io_btnD) begin
-          if (_T_2) begin
-            sprite0YReg <= _T_5;
+          if (_T_9) begin
+            viewBoxYReg <= _T_11;
+          end else if (io_btnU) begin
+            if (_T_6) begin
+              viewBoxYReg <= _T_8;
+            end
           end
         end else if (io_btnU) begin
           if (_T_6) begin
-            sprite0YReg <= _T_9;
+            viewBoxYReg <= _T_8;
           end
         end
       end
     end
     if (reset) begin
-      sprite1XReg <= 11'sh0;
-    end else if (!(_T)) begin
-      if (_T_1) begin
-        if (sprite1direction) begin
-          sprite1XReg <= _T_25;
-        end else begin
-          sprite1XReg <= _T_28;
-        end
-      end
-    end
-    if (reset) begin
-      sprite2YReg <= 10'she8;
-    end else if (!(_T)) begin
-      if (_T_1) begin
-        if (spritefingerDirection) begin
-          sprite2YReg <= _T_45;
-        end else begin
-          sprite2YReg <= _T_54;
-        end
-      end
-    end
-    if (reset) begin
-      sprite3YReg <= 10'she8;
-    end else if (!(_T)) begin
-      if (_T_1) begin
-        if (spritefingerDirection) begin
-          sprite3YReg <= _T_48;
-        end else begin
-          sprite3YReg <= _T_57;
-        end
-      end
-    end
-    if (reset) begin
-      sprite4YReg <= 10'she8;
-    end else if (!(_T)) begin
-      if (_T_1) begin
-        if (spritefingerDirection) begin
-          sprite4YReg <= _T_51;
-        end else begin
-          sprite4YReg <= _T_57;
-        end
-      end
-    end
-    if (reset) begin
-      sprite0FlipHorizontalReg <= 1'h0;
+      SpPlayerXReg <= 11'sh0;
     end else if (!(_T)) begin
       if (_T_1) begin
         if (io_btnR) begin
-          if (_T_10) begin
-            sprite0FlipHorizontalReg <= 1'h0;
+          if (_T_16) begin
+            SpPlayerXReg <= _T_19;
+          end else if (io_btnL) begin
+            if (_T_12) begin
+              SpPlayerXReg <= _T_15;
+            end
           end
         end else if (io_btnL) begin
-          sprite0FlipHorizontalReg <= _GEN_8;
+          if (_T_12) begin
+            SpPlayerXReg <= _T_15;
+          end
         end
       end
     end
     if (reset) begin
-      sprite1FlipHorizontalReg <= 1'h0;
+      score <= 4'h0;
     end else if (!(_T)) begin
       if (_T_1) begin
-        sprite1FlipHorizontalReg <= _GEN_15;
-      end
-    end
-    sprite1direction <= reset | _GEN_54;
-    spritefingerDirection <= reset | _GEN_56;
-    sprite2visible <= reset | _GEN_57;
-    if (reset) begin
-      sprite3visible <= 1'h0;
-    end else if (!(_T)) begin
-      if (_T_1) begin
-        if (_T_42) begin
-          sprite3visible <= 1'h0;
-        end else begin
-          sprite3visible <= _GEN_24;
+        if (_T_2) begin
+          if (_T_3) begin
+            score <= _T_5;
+          end else begin
+            score <= 4'h0;
+          end
         end
       end
     end
     if (reset) begin
-      sprite4visible <= 1'h0;
+      yBoxReg <= 5'h0;
     end else if (!(_T)) begin
-      if (_T_1) begin
-        sprite4visible <= _GEN_28;
+      if (!(_T_1)) begin
+        if (_T_20) begin
+          if (_T_22) begin
+            if (_T_23) begin
+              yBoxReg <= _T_33;
+            end else begin
+              yBoxReg <= 5'h0;
+            end
+          end
+        end
       end
     end
   end
@@ -3614,7 +3466,9 @@ module GameTop(
   output [3:0] io_vgaGreen,
   output       io_Hsync,
   output       io_Vsync,
-  output       io_missingFrameError
+  output       io_missingFrameError,
+  output       io_backBufferWriteError,
+  output       io_viewBoxOutOfRangeError
 );
 `ifdef RANDOMIZE_REG_INIT
   reg [31:0] _RAND_0;
@@ -3639,43 +3493,35 @@ module GameTop(
   wire  graphicEngineVGA_clock; // @[GameTop.scala 43:32]
   wire  graphicEngineVGA_reset; // @[GameTop.scala 43:32]
   wire [10:0] graphicEngineVGA_io_spriteXPosition_0; // @[GameTop.scala 43:32]
-  wire [10:0] graphicEngineVGA_io_spriteXPosition_1; // @[GameTop.scala 43:32]
-  wire [9:0] graphicEngineVGA_io_spriteYPosition_0; // @[GameTop.scala 43:32]
-  wire [9:0] graphicEngineVGA_io_spriteYPosition_2; // @[GameTop.scala 43:32]
-  wire [9:0] graphicEngineVGA_io_spriteYPosition_3; // @[GameTop.scala 43:32]
-  wire [9:0] graphicEngineVGA_io_spriteYPosition_4; // @[GameTop.scala 43:32]
-  wire  graphicEngineVGA_io_spriteVisible_2; // @[GameTop.scala 43:32]
-  wire  graphicEngineVGA_io_spriteVisible_3; // @[GameTop.scala 43:32]
-  wire  graphicEngineVGA_io_spriteVisible_4; // @[GameTop.scala 43:32]
-  wire  graphicEngineVGA_io_spriteFlipHorizontal_0; // @[GameTop.scala 43:32]
-  wire  graphicEngineVGA_io_spriteFlipHorizontal_1; // @[GameTop.scala 43:32]
+  wire [9:0] graphicEngineVGA_io_viewBoxX; // @[GameTop.scala 43:32]
+  wire [8:0] graphicEngineVGA_io_viewBoxY; // @[GameTop.scala 43:32]
+  wire [4:0] graphicEngineVGA_io_backBufferWriteData; // @[GameTop.scala 43:32]
+  wire [10:0] graphicEngineVGA_io_backBufferWriteAddress; // @[GameTop.scala 43:32]
+  wire  graphicEngineVGA_io_backBufferWriteEnable; // @[GameTop.scala 43:32]
   wire  graphicEngineVGA_io_newFrame; // @[GameTop.scala 43:32]
   wire  graphicEngineVGA_io_frameUpdateDone; // @[GameTop.scala 43:32]
   wire  graphicEngineVGA_io_missingFrameError; // @[GameTop.scala 43:32]
+  wire  graphicEngineVGA_io_backBufferWriteError; // @[GameTop.scala 43:32]
+  wire  graphicEngineVGA_io_viewBoxOutOfRangeError; // @[GameTop.scala 43:32]
   wire [3:0] graphicEngineVGA_io_vgaRed; // @[GameTop.scala 43:32]
   wire [3:0] graphicEngineVGA_io_vgaBlue; // @[GameTop.scala 43:32]
   wire [3:0] graphicEngineVGA_io_vgaGreen; // @[GameTop.scala 43:32]
   wire  graphicEngineVGA_io_Hsync; // @[GameTop.scala 43:32]
   wire  graphicEngineVGA_io_Vsync; // @[GameTop.scala 43:32]
-  wire  gameLogic_clock; // @[GameTop.scala 48:25]
-  wire  gameLogic_reset; // @[GameTop.scala 48:25]
-  wire  gameLogic_io_btnU; // @[GameTop.scala 48:25]
-  wire  gameLogic_io_btnL; // @[GameTop.scala 48:25]
-  wire  gameLogic_io_btnR; // @[GameTop.scala 48:25]
-  wire  gameLogic_io_btnD; // @[GameTop.scala 48:25]
-  wire [10:0] gameLogic_io_spriteXPosition_0; // @[GameTop.scala 48:25]
-  wire [10:0] gameLogic_io_spriteXPosition_1; // @[GameTop.scala 48:25]
-  wire [9:0] gameLogic_io_spriteYPosition_0; // @[GameTop.scala 48:25]
-  wire [9:0] gameLogic_io_spriteYPosition_2; // @[GameTop.scala 48:25]
-  wire [9:0] gameLogic_io_spriteYPosition_3; // @[GameTop.scala 48:25]
-  wire [9:0] gameLogic_io_spriteYPosition_4; // @[GameTop.scala 48:25]
-  wire  gameLogic_io_spriteVisible_2; // @[GameTop.scala 48:25]
-  wire  gameLogic_io_spriteVisible_3; // @[GameTop.scala 48:25]
-  wire  gameLogic_io_spriteVisible_4; // @[GameTop.scala 48:25]
-  wire  gameLogic_io_spriteFlipHorizontal_0; // @[GameTop.scala 48:25]
-  wire  gameLogic_io_spriteFlipHorizontal_1; // @[GameTop.scala 48:25]
-  wire  gameLogic_io_newFrame; // @[GameTop.scala 48:25]
-  wire  gameLogic_io_frameUpdateDone; // @[GameTop.scala 48:25]
+  wire  gameLogic_clock; // @[GameTop.scala 47:25]
+  wire  gameLogic_reset; // @[GameTop.scala 47:25]
+  wire  gameLogic_io_btnU; // @[GameTop.scala 47:25]
+  wire  gameLogic_io_btnL; // @[GameTop.scala 47:25]
+  wire  gameLogic_io_btnR; // @[GameTop.scala 47:25]
+  wire  gameLogic_io_btnD; // @[GameTop.scala 47:25]
+  wire [10:0] gameLogic_io_spriteXPosition_0; // @[GameTop.scala 47:25]
+  wire [9:0] gameLogic_io_viewBoxX; // @[GameTop.scala 47:25]
+  wire [8:0] gameLogic_io_viewBoxY; // @[GameTop.scala 47:25]
+  wire [4:0] gameLogic_io_backBufferWriteData; // @[GameTop.scala 47:25]
+  wire [10:0] gameLogic_io_backBufferWriteAddress; // @[GameTop.scala 47:25]
+  wire  gameLogic_io_backBufferWriteEnable; // @[GameTop.scala 47:25]
+  wire  gameLogic_io_newFrame; // @[GameTop.scala 47:25]
+  wire  gameLogic_io_frameUpdateDone; // @[GameTop.scala 47:25]
   reg [20:0] debounceCounter; // @[GameTop.scala 62:32]
   wire  debounceSampleEn = debounceCounter == 21'h1e847f; // @[GameTop.scala 64:24]
   wire [20:0] _T_2 = debounceCounter + 21'h1; // @[GameTop.scala 68:40]
@@ -3702,26 +3548,23 @@ module GameTop(
     .clock(graphicEngineVGA_clock),
     .reset(graphicEngineVGA_reset),
     .io_spriteXPosition_0(graphicEngineVGA_io_spriteXPosition_0),
-    .io_spriteXPosition_1(graphicEngineVGA_io_spriteXPosition_1),
-    .io_spriteYPosition_0(graphicEngineVGA_io_spriteYPosition_0),
-    .io_spriteYPosition_2(graphicEngineVGA_io_spriteYPosition_2),
-    .io_spriteYPosition_3(graphicEngineVGA_io_spriteYPosition_3),
-    .io_spriteYPosition_4(graphicEngineVGA_io_spriteYPosition_4),
-    .io_spriteVisible_2(graphicEngineVGA_io_spriteVisible_2),
-    .io_spriteVisible_3(graphicEngineVGA_io_spriteVisible_3),
-    .io_spriteVisible_4(graphicEngineVGA_io_spriteVisible_4),
-    .io_spriteFlipHorizontal_0(graphicEngineVGA_io_spriteFlipHorizontal_0),
-    .io_spriteFlipHorizontal_1(graphicEngineVGA_io_spriteFlipHorizontal_1),
+    .io_viewBoxX(graphicEngineVGA_io_viewBoxX),
+    .io_viewBoxY(graphicEngineVGA_io_viewBoxY),
+    .io_backBufferWriteData(graphicEngineVGA_io_backBufferWriteData),
+    .io_backBufferWriteAddress(graphicEngineVGA_io_backBufferWriteAddress),
+    .io_backBufferWriteEnable(graphicEngineVGA_io_backBufferWriteEnable),
     .io_newFrame(graphicEngineVGA_io_newFrame),
     .io_frameUpdateDone(graphicEngineVGA_io_frameUpdateDone),
     .io_missingFrameError(graphicEngineVGA_io_missingFrameError),
+    .io_backBufferWriteError(graphicEngineVGA_io_backBufferWriteError),
+    .io_viewBoxOutOfRangeError(graphicEngineVGA_io_viewBoxOutOfRangeError),
     .io_vgaRed(graphicEngineVGA_io_vgaRed),
     .io_vgaBlue(graphicEngineVGA_io_vgaBlue),
     .io_vgaGreen(graphicEngineVGA_io_vgaGreen),
     .io_Hsync(graphicEngineVGA_io_Hsync),
     .io_Vsync(graphicEngineVGA_io_Vsync)
   );
-  GameLogicTask0 gameLogic ( // @[GameTop.scala 48:25]
+  GameLogic gameLogic ( // @[GameTop.scala 47:25]
     .clock(gameLogic_clock),
     .reset(gameLogic_reset),
     .io_btnU(gameLogic_io_btnU),
@@ -3729,16 +3572,11 @@ module GameTop(
     .io_btnR(gameLogic_io_btnR),
     .io_btnD(gameLogic_io_btnD),
     .io_spriteXPosition_0(gameLogic_io_spriteXPosition_0),
-    .io_spriteXPosition_1(gameLogic_io_spriteXPosition_1),
-    .io_spriteYPosition_0(gameLogic_io_spriteYPosition_0),
-    .io_spriteYPosition_2(gameLogic_io_spriteYPosition_2),
-    .io_spriteYPosition_3(gameLogic_io_spriteYPosition_3),
-    .io_spriteYPosition_4(gameLogic_io_spriteYPosition_4),
-    .io_spriteVisible_2(gameLogic_io_spriteVisible_2),
-    .io_spriteVisible_3(gameLogic_io_spriteVisible_3),
-    .io_spriteVisible_4(gameLogic_io_spriteVisible_4),
-    .io_spriteFlipHorizontal_0(gameLogic_io_spriteFlipHorizontal_0),
-    .io_spriteFlipHorizontal_1(gameLogic_io_spriteFlipHorizontal_1),
+    .io_viewBoxX(gameLogic_io_viewBoxX),
+    .io_viewBoxY(gameLogic_io_viewBoxY),
+    .io_backBufferWriteData(gameLogic_io_backBufferWriteData),
+    .io_backBufferWriteAddress(gameLogic_io_backBufferWriteAddress),
+    .io_backBufferWriteEnable(gameLogic_io_backBufferWriteEnable),
     .io_newFrame(gameLogic_io_newFrame),
     .io_frameUpdateDone(gameLogic_io_frameUpdateDone)
   );
@@ -3748,19 +3586,16 @@ module GameTop(
   assign io_Hsync = graphicEngineVGA_io_Hsync; // @[GameTop.scala 102:12]
   assign io_Vsync = graphicEngineVGA_io_Vsync; // @[GameTop.scala 103:12]
   assign io_missingFrameError = graphicEngineVGA_io_missingFrameError; // @[GameTop.scala 114:24]
+  assign io_backBufferWriteError = graphicEngineVGA_io_backBufferWriteError; // @[GameTop.scala 115:27]
+  assign io_viewBoxOutOfRangeError = graphicEngineVGA_io_viewBoxOutOfRangeError; // @[GameTop.scala 116:29]
   assign graphicEngineVGA_clock = clock;
   assign graphicEngineVGA_reset = _T_3 ? 1'h0 : 1'h1; // @[GameTop.scala 83:26]
   assign graphicEngineVGA_io_spriteXPosition_0 = gameLogic_io_spriteXPosition_0; // @[GameTop.scala 119:39]
-  assign graphicEngineVGA_io_spriteXPosition_1 = gameLogic_io_spriteXPosition_1; // @[GameTop.scala 119:39]
-  assign graphicEngineVGA_io_spriteYPosition_0 = gameLogic_io_spriteYPosition_0; // @[GameTop.scala 120:39]
-  assign graphicEngineVGA_io_spriteYPosition_2 = gameLogic_io_spriteYPosition_2; // @[GameTop.scala 120:39]
-  assign graphicEngineVGA_io_spriteYPosition_3 = gameLogic_io_spriteYPosition_3; // @[GameTop.scala 120:39]
-  assign graphicEngineVGA_io_spriteYPosition_4 = gameLogic_io_spriteYPosition_4; // @[GameTop.scala 120:39]
-  assign graphicEngineVGA_io_spriteVisible_2 = gameLogic_io_spriteVisible_2; // @[GameTop.scala 121:37]
-  assign graphicEngineVGA_io_spriteVisible_3 = gameLogic_io_spriteVisible_3; // @[GameTop.scala 121:37]
-  assign graphicEngineVGA_io_spriteVisible_4 = gameLogic_io_spriteVisible_4; // @[GameTop.scala 121:37]
-  assign graphicEngineVGA_io_spriteFlipHorizontal_0 = gameLogic_io_spriteFlipHorizontal_0; // @[GameTop.scala 122:44]
-  assign graphicEngineVGA_io_spriteFlipHorizontal_1 = gameLogic_io_spriteFlipHorizontal_1; // @[GameTop.scala 122:44]
+  assign graphicEngineVGA_io_viewBoxX = gameLogic_io_viewBoxX; // @[GameTop.scala 126:32]
+  assign graphicEngineVGA_io_viewBoxY = gameLogic_io_viewBoxY; // @[GameTop.scala 127:32]
+  assign graphicEngineVGA_io_backBufferWriteData = gameLogic_io_backBufferWriteData; // @[GameTop.scala 130:43]
+  assign graphicEngineVGA_io_backBufferWriteAddress = gameLogic_io_backBufferWriteAddress; // @[GameTop.scala 131:46]
+  assign graphicEngineVGA_io_backBufferWriteEnable = gameLogic_io_backBufferWriteEnable; // @[GameTop.scala 132:45]
   assign graphicEngineVGA_io_frameUpdateDone = gameLogic_io_frameUpdateDone; // @[GameTop.scala 136:39]
   assign gameLogic_clock = clock;
   assign gameLogic_reset = _T_3 ? 1'h0 : 1'h1; // @[GameTop.scala 84:19]
@@ -3997,6 +3832,8 @@ module Top(
   wire  gameTop_io_Hsync; // @[Top.scala 41:23]
   wire  gameTop_io_Vsync; // @[Top.scala 41:23]
   wire  gameTop_io_missingFrameError; // @[Top.scala 41:23]
+  wire  gameTop_io_backBufferWriteError; // @[Top.scala 41:23]
+  wire  gameTop_io_viewBoxOutOfRangeError; // @[Top.scala 41:23]
   reg  _T_1; // @[Top.scala 46:48]
   reg  _T_2; // @[Top.scala 46:40]
   reg  _T_3; // @[Top.scala 46:32]
@@ -4018,7 +3855,9 @@ module Top(
     .io_vgaGreen(gameTop_io_vgaGreen),
     .io_Hsync(gameTop_io_Hsync),
     .io_Vsync(gameTop_io_Vsync),
-    .io_missingFrameError(gameTop_io_missingFrameError)
+    .io_missingFrameError(gameTop_io_missingFrameError),
+    .io_backBufferWriteError(gameTop_io_backBufferWriteError),
+    .io_viewBoxOutOfRangeError(gameTop_io_viewBoxOutOfRangeError)
   );
   assign io_vgaRed = gameTop_io_vgaRed; // @[Top.scala 59:14]
   assign io_vgaGreen = gameTop_io_vgaGreen; // @[Top.scala 59:14]
@@ -4034,8 +3873,8 @@ module Top(
   assign io_led_6 = 1'h0; // @[Top.scala 59:14]
   assign io_led_7 = 1'h0; // @[Top.scala 59:14]
   assign io_missingFrameError = gameTop_io_missingFrameError; // @[Top.scala 59:14]
-  assign io_backBufferWriteError = 1'h0; // @[Top.scala 59:14]
-  assign io_viewBoxOutOfRangeError = 1'h0; // @[Top.scala 59:14]
+  assign io_backBufferWriteError = gameTop_io_backBufferWriteError; // @[Top.scala 59:14]
+  assign io_viewBoxOutOfRangeError = gameTop_io_viewBoxOutOfRangeError; // @[Top.scala 59:14]
   assign gameTop_clock = clock;
   assign gameTop_reset = |_T_7; // @[Top.scala 56:17]
   assign gameTop_io_btnU = io_btnU; // @[Top.scala 59:14]

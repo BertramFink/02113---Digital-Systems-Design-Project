@@ -95,56 +95,17 @@ class GameLogicTask0(SpriteNumber: Int, BackTileNumber: Int) extends Module {
   //Two registers holding the sprite sprite X and Y with the sprite initial position
   val sprite0XReg = RegInit(32.S(11.W))
   val sprite0YReg = RegInit((360-32).S(10.W))
-  val sprite1XReg = RegInit(0.S(11.W))
-  val sprite1YReg = RegInit((360-64).S(10.W))
-  val sprite2XReg = RegInit(380.S(11.W))
-  val sprite2YReg = RegInit((360-128).S(10.W))
-  val sprite3XReg = RegInit(380.S(11.W))
-  val sprite3YReg = RegInit((360-128).S(10.W))
-  val sprite4XReg = RegInit(380.S(11.W))
-  val sprite4YReg = RegInit((360-128).S(10.W))
 
   //A registers holding the sprite horizontal flip
   val sprite0FlipHorizontalReg = RegInit(false.B)
-  val sprite1FlipHorizontalReg = RegInit(false.B)
-  val sprite2FlipHorizontalReg = RegInit(false.B)
-  val sprite3FlipHorizontalReg = RegInit(false.B)
-  val sprite4FlipHorizontalReg = RegInit(false.B)
-
-
-  //sprite direction
-  val sprite1direction = RegInit(true.B)
-  val spritefingerDirection = RegInit(true.B)
 
   //Making sprite 0 visible
-  val sprite2visible = RegInit(true.B)
-  val sprite3visible = RegInit(false.B)
-  val sprite4visible = RegInit(false.B)
-
   io.spriteVisible(0) := true.B
-  io.spriteVisible(1) := true.B
-  io.spriteVisible(2) := sprite2visible
-  io.spriteVisible(3) := sprite3visible
-  io.spriteVisible(4) := sprite4visible
 
   //Connecting resiters to the graphic engine
   io.spriteXPosition(0) := sprite0XReg
   io.spriteYPosition(0) := sprite0YReg
   io.spriteFlipHorizontal(0) := sprite0FlipHorizontalReg
-  io.spriteXPosition(1) := sprite1XReg
-  io.spriteYPosition(1) := sprite1YReg
-  io.spriteFlipHorizontal(1) := sprite1FlipHorizontalReg
-
-  io.spriteXPosition(2) := sprite2XReg
-  io.spriteYPosition(2) := sprite2YReg
-  io.spriteFlipHorizontal(2) := sprite2FlipHorizontalReg
-
-  io.spriteXPosition(3) := sprite3XReg
-  io.spriteYPosition(3) := sprite3YReg
-  io.spriteFlipHorizontal(3) := sprite3FlipHorizontalReg
-  io.spriteXPosition(4) := sprite4XReg
-  io.spriteYPosition(4) := sprite4YReg
-  io.spriteFlipHorizontal(4) := sprite4FlipHorizontalReg
 
   //FSMD switch
   switch(stateReg) {
@@ -155,11 +116,11 @@ class GameLogicTask0(SpriteNumber: Int, BackTileNumber: Int) extends Module {
     }
 
     is(compute1) {
-      when(io.btnD) {
+      when(io.btnD){
         when(sprite0YReg < (480 - 32 - 24).S) {
           sprite0YReg := sprite0YReg + 2.S
         }
-      }.elsewhen(io.btnU) {
+      } .elsewhen(io.btnU){
         when(sprite0YReg > (96).S) {
           sprite0YReg := sprite0YReg - 2.S
         }
@@ -169,68 +130,14 @@ class GameLogicTask0(SpriteNumber: Int, BackTileNumber: Int) extends Module {
           sprite0XReg := sprite0XReg + 2.S
           sprite0FlipHorizontalReg := false.B
         }
-      }.elsewhen(io.btnL) {
+      } .elsewhen(io.btnL){
         when(sprite0XReg > 32.S) {
           sprite0XReg := sprite0XReg - 2.S
           sprite0FlipHorizontalReg := true.B
         }
       }
-
-      when(sprite1XReg <= 0.S){
-        sprite1FlipHorizontalReg := false.B
-        sprite1direction := true.B
-      }
-      when(sprite1XReg >=360.S-32.S){
-        sprite1FlipHorizontalReg := true.B
-        sprite1direction := false.B
-      }
-
-      when(sprite1direction) {
-        sprite1XReg := sprite1XReg + 1.S
-      }.otherwise(sprite1XReg := sprite1XReg - 1.S)
-
-
-      //light
-      when(sprite2YReg <=360.S -128.S){
-        spritefingerDirection := true.B
-      }
-      when(sprite2YReg >=360.S){
-        spritefingerDirection := false.B
-      }
-      when(sprite2YReg === 360.S-90.S) {
-        sprite2visible := true.B
-        sprite3visible := false.B
-        sprite4visible := false.B
-
-      }
-
-    when(sprite2YReg === (360-60).S ){
-      sprite2visible := false.B
-      sprite3visible := true.B
-      sprite4visible := false.B
-
-    }
-    when(sprite2YReg ===360.S-30.S){
-      sprite2visible := false.B
-      sprite3visible := false.B
-      sprite4visible := true.B
-    }
-
-    when(spritefingerDirection) {
-      sprite2YReg := sprite2YReg + 1.S
-      sprite3YReg := sprite3YReg + 1.S
-      sprite4YReg := sprite4YReg + 1.S
-    }.otherwise {
-      sprite2YReg := sprite2YReg - 1.S
-      sprite3YReg := sprite3YReg - 1.S
-      sprite4YReg := sprite3YReg - 1.S
-    }
-
-    //birds
-
-    
       stateReg := done
-}
+    }
 
     is(done) {
       io.frameUpdateDone := true.B

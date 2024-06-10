@@ -87,26 +87,6 @@ class GameLogicTask2(SpriteNumber: Int, BackTileNumber: Int) extends Module {
   /////////////////////////////////////////////////////////////////
   // Write here your game logic
   // (you might need to change the initialization values above)
-  val sprite1XReg = RegInit(32.S(11.W))
-  val sprite1YReg = RegInit((360-32).S(10.W))
-
-  //A registers holding the sprite horizontal flip
-  val sprite1FlipHorizontalReg = RegInit(false.B)
-
-  //Making sprite 0 visible
-  io.spriteVisible(0) := true.B
-
-  //Connecting resiters to the graphic engine
-  io.spriteXPosition(0) := sprite1XReg
-  io.spriteYPosition(0) := sprite1YReg
-  io.spriteFlipHorizontal(0) := sprite1FlipHorizontalReg
-
-
-  val movesprite1 =RegInit(0.U(8.W))
-when(movesprite1 <128.U ){
-  sprite1XReg := sprite1XReg +1.S
-}.otherwise(sprite1XReg := sprite1XReg - 1.S)
-
   /////////////////////////////////////////////////////////////////
   
 

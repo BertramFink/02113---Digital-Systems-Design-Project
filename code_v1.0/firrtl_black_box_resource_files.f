@@ -1,2 +1,2 @@
-C:\Users\berty\OneDrive\Dokumenter\DTU\2.Semester\digitalsystems\02113---Digital-Systems-Design-Project\code_v1.0\RamInitSpWf.v
-C:\Users\berty\OneDrive\Dokumenter\DTU\2.Semester\digitalsystems\02113---Digital-Systems-Design-Project\code_v1.0\RamSpWf.v
+C:\Users\Sebastian\Documents\DTU\2.semester\02113\02113---Digital-Systems-Design-Project\code_v1.0\RamInitSpWf.v
+C:\Users\Sebastian\Documents\DTU\2.semester\02113\02113---Digital-Systems-Design-Project\code_v1.0\RamSpWf.v

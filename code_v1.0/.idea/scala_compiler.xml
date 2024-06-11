@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ScalaCompilerConfiguration">
-    <profile name="sbt 1" modules="code_v1-0_3072" />
+    <profile name="sbt 1" modules="code_v1-0_8596" />
     <profile name="sbt 2" modules="code_v1-0">
       <parameters>
         <parameter value="-Xsource:2.11" />

@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.runs/synth_1/Top.tcl"
+  variable script "C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.runs/synth_1/Top.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,7 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 5
+set_param chipscope.maxJobs 4
 set_param xicom.use_bs_reader 1
 set_msg_config  -id {Power 33-332}  -string {{WARNING: [Power 33-332] Found switching activity that implies high-fanout reset nets being asserted for excessive periods of time which may result in inaccurate power analysis.
 Resolution: To review and fix problems, please run Power Constraints Advisor in the GUI from Tools > Power Constraints Advisor or run report_power with the -advisory option to generate a text report.}}  -suppress 
@@ -80,70 +80,70 @@ create_project -in_memory -part xc7a35tcpg236-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.cache/wt [current_project]
-set_property parent.project_path C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.xpr [current_project]
+set_property webtalk.parent_dir C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.cache/wt [current_project]
+set_property parent.project_path C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part digilentinc.com:basys3:part0:1.2 [current_project]
-set_property ip_output_repo c:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.cache/ip [current_project]
+set_property ip_output_repo c:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_mem {
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_8.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_27.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_26.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_19.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_7.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_10.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_17.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_6.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_10.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_0.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_9.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_18.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_0.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_11.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_24.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_6.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_9.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_7.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_25.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_12.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_8.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_15.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_13.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_22.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_2.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_3.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_21.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_3.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_30.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_23.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_14.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_1.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_4.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_5.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_14.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_13.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_31.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_29.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_5.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_16.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_1.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_15.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_12.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_28.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_2.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backbuffer_init.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_20.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_4.mem
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_11.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_8.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_27.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_26.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_19.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_7.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_10.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_17.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_6.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_10.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_0.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_9.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_18.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_0.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_11.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_24.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_6.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_9.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_7.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_25.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_12.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_8.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_15.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_13.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_22.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_2.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_3.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_21.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_3.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_30.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_23.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_14.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_1.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_4.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_5.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_14.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_13.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_31.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_29.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_5.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_16.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_1.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_15.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_12.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_28.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_2.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backbuffer_init.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_20.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/backtile_init_4.mem
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/memory_init/sprite_init_11.mem
 }
 read_verilog -library xil_defaultlib {
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/RamSpWf.v
-  C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/Top.v
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/RamInitSpWf.v
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/RamSpWf.v
+  C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/Top.v
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -154,8 +154,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.srcs/constrs_1/imports/code/GameBasys3.xdc
-set_property used_in_implementation false [get_files C:/Users/berty/OneDrive/Dokumenter/DTU/2.Semester/digitalsystems/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.srcs/constrs_1/imports/code/GameBasys3.xdc]
+read_xdc C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.srcs/constrs_1/imports/code/GameBasys3.xdc
+set_property used_in_implementation false [get_files C:/Users/Sebastian/Documents/DTU/2.semester/02113/02113---Digital-Systems-Design-Project/code_v1.0/vivado/Basys3Game/Basys3Game.srcs/constrs_1/imports/code/GameBasys3.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]

@@ -130,6 +130,7 @@ class GameTop extends Module {
   graphicEngineVGA.io.backBufferWriteData := gameLogic.io.backBufferWriteData
   graphicEngineVGA.io.backBufferWriteAddress := gameLogic.io.backBufferWriteAddress
   graphicEngineVGA.io.backBufferWriteEnable := gameLogic.io.backBufferWriteEnable
+  gameLogic.io.backBufferReadData := graphicEngineVGA.io.backBufferReadData
 
   //Status
   gameLogic.io.newFrame := graphicEngineVGA.io.newFrame

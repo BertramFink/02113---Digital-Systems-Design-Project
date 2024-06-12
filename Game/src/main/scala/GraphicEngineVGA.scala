@@ -26,6 +26,10 @@ class GraphicEngineVGA(SpriteNumber: Int, BackTileNumber: Int) extends Module {
     val backBufferWriteAddress = Input(UInt(11.W))
     val backBufferWriteEnable = Input(Bool())
 
+    // Modified
+    val backBufferReadData = Output(UInt(log2Up(BackTileNumber).W))
+    // End Modified
+
     //Status
     val newFrame = Output(Bool())
     val frameUpdateDone = Input(Bool())
@@ -214,6 +218,10 @@ class GraphicEngineVGA(SpriteNumber: Int, BackTileNumber: Int) extends Module {
   backBufferShadowMemory.io.enable := true.B
   backBufferShadowMemory.io.writeEnable := Mux(restoreEnabled, RegNext(restoreEnabled), Mux(copyEnabled, false.B, RegNext(io.backBufferWriteEnable)))
   backBufferShadowMemory.io.dataWrite := Mux(restoreEnabled, backBufferRestoreMemory.io.dataRead, RegNext(io.backBufferWriteData))
+
+  // Modified:
+  io.backBufferReadData := backBufferShadowMemory.io.dataRead
+  // End Modified
 
   backBufferMemory.io.address := Mux(copyEnabledReg, RegNext(backMemoryCopyCounter(10, 0)), pixelXBack(10,5).asUInt +& 40.U(6.W) * pixelYBack(10,5).asUInt)
   backBufferMemory.io.enable := true.B
